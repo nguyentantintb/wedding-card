@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('product', 'ProductController');
 	Route::resource('category', 'CategoryController');
 	Route::resource('user', 'UserController');
+	Route::resource('photo', 'PhotoController');
 	Route::get('gallery', function () {
 		return view('admin.gallery.gallery');
 	});

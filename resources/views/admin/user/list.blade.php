@@ -27,34 +27,37 @@
 									<span class="lbl"></span>
 								</label>
 							</th>
+							<th>STT</th>
 							<th>User name</th>
 							<th>Email</th>
 							<th class="hidden-480">Level</th>
+							<th class="hidden-480">Update</th>
 							<th class="hidden-phone">
 								<i class="icon-time bigger-110 hidden-phone"></i>
 								Update
 							</th>
-							<th class="hidden-480">Status</th>
-							<th>Action</th>
+
 						</tr>
 					</thead>
 
 					<tbody>
+						<?php $stt = 0;?>
 						@foreach($user as $users)
+						<?php $stt = $stt + 1;?>
 						<tr>
+
 							<td class="center">
 								<label>
 									<input type="checkbox" />
 									<span class="lbl"></span>
 								</label>
 							</td>
+							<td>{{ $stt }}</td>
 							<td>{{ $users->name }}</td>
 							<td>{{ $users->email }}</td>
 							<td class="hidden-480">Member</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($users->update_at)) }}</td>
-							<td class="hidden-480">
-								<span class="label label-warning"></span>
-							</td>
+
 							<td class="td-actions">
 								<div class="hidden-phone visible-desktop action-buttons">
 									<a class="blue" href="#">
@@ -65,7 +68,7 @@
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 
-									<a class="red" href="#">
+									<a class="red" href="#" method="delete">
 										<i class="icon-trash bigger-130"></i>
 									</a>
 								</div>

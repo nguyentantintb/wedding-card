@@ -45,7 +45,7 @@ class CategoryController extends Controller {
 	 */
 	public function show($id) {
 		$cate = Category::find($id);
-		return view('admin.category.edit')
+		return view('admin.category.edit');
 	}
 
 	/**

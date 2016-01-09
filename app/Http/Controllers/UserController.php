@@ -44,7 +44,8 @@ class UserController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id) {
-		//
+		$user = User::find($id);
+		return view('admin.user.edit', compact('user'));
 	}
 
 	/**
@@ -54,7 +55,7 @@ class UserController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
-		//
+		User::update($request->all());
 	}
 
 	/**
@@ -75,6 +76,6 @@ class UserController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-		//
+		User::destroy($id);
 	}
 }

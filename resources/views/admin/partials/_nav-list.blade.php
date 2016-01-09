@@ -14,14 +14,14 @@
     </a>
     <ul class="submenu">
       <li>
-        <a href="#">
+        <a href="{{ route('admin.category.index') }}">
           <i class="icon-double-angle-right"></i>
           List Category
         </a>
       </li>
 
       <li>
-        <a href="#">
+        <a href="{{ route('admin.category.create') }}">
           <i class="icon-double-angle-right"></i>
           Add Category
         </a>
@@ -37,14 +37,14 @@
     </a>
     <ul class="submenu">
       <li>
-        <a href="#">
+        <a href="{{ route('admin.product.index') }}">
           <i class="icon-double-angle-right"></i>
           List Product
         </a>
       </li>
 
       <li>
-        <a href="#">
+        <a href="{{ route('admin.product.create') }}">
           <i class="icon-double-angle-right"></i>
           Add Product
         </a>
@@ -79,14 +79,14 @@
     </a>
     <ul class="submenu">
       <li>
-        <a href="#">
+        <a href="{{ route('admin.user.index') }}">
           <i class="icon-double-angle-right"></i>
           List User
         </a>
       </li>
 
       <li>
-        <a href="#">
+        <a href="{{ route('admin.user.create') }}">
           <i class="icon-double-angle-right"></i>
           Add User
         </a>

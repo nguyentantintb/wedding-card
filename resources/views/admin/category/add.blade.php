@@ -14,7 +14,7 @@
 		<div class="span12">
 			<!--PAGE CONTENT BEGINS-->
 			@include('admin.partials._error')
-			<form class="form-horizontal" action="#" method="POST">
+			<form class="form-horizontal" action="{{ route('admin.category.store') }}" method="POST">
 				<input type="hidden" name="_token" value="{!! csrf_token() !!}">
 				<div class="control-group">
 					<label class="control-label">Category Parent</label>

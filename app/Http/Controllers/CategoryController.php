@@ -44,8 +44,7 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id) {
-		$cate = Category::find($id);
-		return view('admin.category.edit');
+
 	}
 
 	/**
@@ -55,7 +54,8 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
-		//
+		$cate = Category::find($id);
+		return view('admin.category.edit');
 	}
 
 	/**

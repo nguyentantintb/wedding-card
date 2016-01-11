@@ -27,21 +27,19 @@
 									<span class="lbl"></span>
 								</label>
 							</th>
+							<th class="hidden-480">STT</th>
 							<th>Category Name</th>
 							<th>Slug</th>
-							<th class="hidden-480">Clicks</th>
-
-							<th class="hidden-phone">
-								<i class="icon-time bigger-110 hidden-phone"></i>
-								Update
-							</th>
-							<th class="hidden-480">Status</th>
-
+							<th class="hidden-480">created at</th>
+							<th class="hidden-480">updated at</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 
 					<tbody>
+						<?php $stt = 0;?>
+						@foreach($cate as $category)
+						<?php $stt = $stt + 1;?>
 						<tr>
 							<td class="center">
 								<label>
@@ -49,15 +47,11 @@
 									<span class="lbl"></span>
 								</label>
 							</td>
-							<td></td>
-							<td></td>
-							<td class="hidden-480"></td>
-							<td class="hidden-phone"></td>
-
-							<td class="hidden-480">
-								<span class="label label-inverse arrowed-in"></span>
-							</td>
-
+							<td>{{ $stt }}</td>
+							<td>{{ $category->name }}</td>
+							<td>{{ $category->slug }}</td>
+							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
+							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
 							<td class="td-actions">
 								<div class="hidden-phone visible-desktop action-buttons">
 									<a class="blue" href="#">
@@ -68,46 +62,13 @@
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 
-									<a class="red" href="#">
+									<a class="red" href="#" method="delete">
 										<i class="icon-trash bigger-130"></i>
 									</a>
 								</div>
-
-								<div class="hidden-desktop visible-phone">
-									<div class="inline position-relative">
-										<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-											<i class="icon-caret-down icon-only bigger-120"></i>
-										</button>
-
-										<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
-											<li>
-												<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-													<span class="blue">
-														<i class="icon-zoom-in bigger-120"></i>
-													</span>
-												</a>
-											</li>
-
-											<li>
-												<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-													<span class="green">
-														<i class="icon-edit bigger-120"></i>
-													</span>
-												</a>
-											</li>
-
-											<li>
-												<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-													<span class="red">
-														<i class="icon-trash bigger-120"></i>
-													</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
 							</td>
 						</tr>
+						@endforeach
 					</tbody>
 				</table>
 			</div>

@@ -2,6 +2,7 @@
 @section('content')
 <div class="page-content">
 	<div class="page-header position-relative">
+		
 		<h1>
 			Tables
 			<small>
@@ -16,7 +17,7 @@
 			<!--PAGE CONTENT BEGINS-->
 			<div class="row-fluid">
 				<div class="table-header">
-					Results for "List Category"
+					Danh sách các loại thiệp
 				</div>
 				<table id="sample-table-2" class="table table-striped table-bordered table-hover">
 					<thead>
@@ -28,10 +29,9 @@
 								</label>
 							</th>
 							<th class="hidden-480">STT</th>
-							<th>Category Name</th>
-							<th>Slug</th>
-							<th class="hidden-480">created at</th>
-							<th class="hidden-480">updated at</th>
+							<th>Loại</th>
+							<th class="hidden-480">Ngày tạo</th>
+							<th class="hidden-480">Ngày cập nhật</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -49,7 +49,6 @@
 							</td>
 							<td>{{ $stt }}</td>
 							<td>{{ $category->name }}</td>
-							<td>{{ $category->slug }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
 							<td class="td-actions">
@@ -58,13 +57,16 @@
 										<i class="icon-zoom-in bigger-130"></i>
 									</a>
 
-									<a class="green" href="#">
+									<a class="green" href="{{ route('admin.category.edit', $category->id) }}">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 
-									<a class="red" href="#" method="delete">
-										<i class="icon-trash bigger-130"></i>
+									<a>
+										{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE')) !!}
+										<button><i class="icon-trash bigger-130"></i></button>
+										{!! Form::close() !!}
 									</a>
+									
 								</div>
 							</td>
 						</tr>

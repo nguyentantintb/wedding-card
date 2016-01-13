@@ -4,7 +4,7 @@
       <a href="#" class="brand">
         <small>
           <i class="icon-leaf"></i>
-          Ace Admin
+          Phần quản lý
         </small>
       </a><!--/.brand-->
 

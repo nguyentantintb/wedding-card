@@ -54,8 +54,8 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
-		$cate = Category::find($id);
-		return view('admin.category.edit');
+		$cate = Category::findOrFail($id);
+		return view('admin.category.edit', compact('cate'));
 	}
 
 	/**
@@ -66,7 +66,10 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, $id) {
-		//
+		$cate = Category::find($id);
+		$cate->name = $request->name;
+		$cate->save();
+		return redirect('admin/category');
 	}
 
 	/**
@@ -76,6 +79,8 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-		//
+		$cate = Category::findOrFail($id);
+		$cate->delete();
+		return redirect()->back();
 	}
 }

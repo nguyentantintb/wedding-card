@@ -3,10 +3,10 @@
 <div class="page-content">
 	<div class="page-header position-relative">
 		<h1>
-			Category
+			Loại thiệp
 			<small>
 				<i class="icon-double-angle-right"></i>
-				Create new category
+				Thêm loại mới
 			</small>
 		</h1>
 	</div><!--/.page-header-->
@@ -27,10 +27,10 @@
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="form-field-1">Category Name</label>
+					<label class="control-label" for="form-field-1">Tên loại thiệp</label>
 
 					<div class="controls">
-						<input type="text" id="form-field-1" placeholder="Category name" name="name" />
+						<input type="text" id="form-field-1" placeholder="Nhập tên loại thiệp" name="name" />
 					</div>
 				</div>
 
@@ -38,7 +38,7 @@
 				<div class="form-actions">
 					<button class="btn btn-info" type="submit">
 						<i class="icon-ok bigger-110"></i>
-						Submit
+						Thêm
 					</button>
 
 					&nbsp; &nbsp; &nbsp;

@@ -30,8 +30,10 @@
 					<label class="control-label" for="form-field-1">Tên loại thiệp</label>
 
 					<div class="controls">
-						<input type="text" id="form-field-1" placeholder="Nhập tên loại thiệp" name="name" />
+						<input type="text" id="form-field-1" placeholder="Nhập tên loại thiệp" name="name" />&nbsp;
+						{!! $errors->first('name') !!}
 					</div>
+
 				</div>
 
 				<div class="space-4"></div>

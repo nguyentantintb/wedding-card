@@ -30,7 +30,9 @@
 
 					<div class="controls">
 					
-						<input type="text" id="form-field-1" name="name" value="{{$cate->name}}" />
+						<input type="text" id="form-field-1" name="name" value="{{$cate->name}}" />&nbsp;
+						{!! $errors->first('name') !!}
+
 						
 					</div>
 				</div>
@@ -39,7 +41,7 @@
 				<div class="form-actions">
 					<button class="btn btn-info" type="submit">
 						<i class="icon-ok bigger-110"></i>
-						Thêm
+						Sửa
 					</button>
 
 					&nbsp; &nbsp; &nbsp;

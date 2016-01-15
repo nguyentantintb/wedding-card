@@ -86,11 +86,19 @@
 <script type="text/javascript">
 	$(function() {
 		var oTable1 = $('#sample-table-2').dataTable( {
-			"aoColumns": [
-			{ "bSortable": false },
-			null, null,null, null, null,
-			{ "bSortable": false }
-			] } );
+			"aoColumnDefs": [
+			{ "bSortable": false, "aTargets": [0, -1] },
+			{ "bSearchable": false, "aTargets": [0, -1] },
+			] ,
+			"oLanguage": 
+			{
+				"sSearch": "Tìm kiếm: ",
+				"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
+				 "sInfo": "Đang hiển thị dòng _START_ đến _END_  của tất cả _TOTAL_ dòng"
+			}
+
+			
+		} );
 
 
 		$('table th input:checkbox').on('click' , function(){

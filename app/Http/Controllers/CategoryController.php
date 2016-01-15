@@ -55,7 +55,7 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
-		$cate = Category::findOrFail($id);
+		$cate = Category::findBySlug($id);
 		return view('admin.category.edit', compact('cate'));
 	}
 
@@ -69,6 +69,7 @@ class CategoryController extends Controller {
 	public function update(CategoryRequest $request, $id) {
 		$cate = Category::find($id);
 		$cate->name = $request->name;
+		$cate->resluggify(); //update slug khi update name
 		$cate->save();
 		return redirect('admin/category');
 	}

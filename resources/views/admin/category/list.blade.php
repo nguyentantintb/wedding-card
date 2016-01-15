@@ -57,7 +57,7 @@
 										<i class="icon-zoom-in bigger-130"></i>
 									</a>
 
-									<a class="green" href="{{ route('admin.category.edit', $category->id) }}">
+									<a class="green" href="{{ route('admin.category.edit', $category->slug) }}">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 

@@ -12,10 +12,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-       for($i = 1; $i < 10; $i++) {
-	       $cate = new Category;
-	       $cate->name = "Thiệp loại $i";
-	       $cate->save();
-      };
-    }
+            factory(App\Category::class, 50)->create();
+    }  
 }

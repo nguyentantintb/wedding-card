@@ -10,7 +10,8 @@
   <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
-
+ <link rel="stylesheet" href="/css/parsley.css" />
+ <link rel="stylesheet" href="/css/sweetalert2.css" />
 
   <!-- Chua can thiet
   <link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
@@ -32,6 +33,8 @@
       <link rel="stylesheet" href="/assets/css/ace.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-responsive.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+ 
+
 
     <!--[if lte IE 8]>
       <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
@@ -207,6 +210,9 @@
       <script src="/assets/js/flot/jquery.flot.min.js"></script>
       <script src="/assets/js/flot/jquery.flot.pie.min.js"></script>
       <script src="/assets/js/flot/jquery.flot.resize.min.js"></script>
+      <script src="/js/parsley.min.js"></script>
+      <script src="/js/sweetalert2.min.js"></script>
+      <script src="/js/myscript.js"></script>
 
       <!--ace scripts-->
       <script src="/assets/js/ace-elements.min.js"></script>

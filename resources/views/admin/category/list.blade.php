@@ -28,26 +28,25 @@
 									<span class="lbl"></span>
 								</label>
 							</th>
-							<th class="hidden-480">STT</th>
-							<th>Loại</th>
-							<th class="hidden-480">Ngày tạo</th>
-							<th class="hidden-480">Ngày cập nhật</th>
-							<th>Action</th>
+							<th class="hidden-480 center">STT</th>
+							<th class="hidden-480 center">Loại</th>
+							<th class="hidden-480 center">Ngày tạo</th>
+							<th class="hidden-480 center">Ngày cập nhật</th>
+							<th class="center">Action</th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<?php $stt = 0;?>
 						@foreach($cate as $category)
-						<?php $stt = $stt + 1;?>
 						<tr>
+						
 							<td class="center">
 								<label>
-									<input type="checkbox" />
+									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}"/>
 									<span class="lbl"></span>
 								</label>
 							</td>
-							<td>{{ $stt }}</td>
+							<td class="center"></td>
 							<td>{{ $category->name }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
@@ -82,24 +81,32 @@
 @section('script')
 <script src="/assets/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+
 <!--inline scripts related to this page-->
 <script type="text/javascript">
 	$(function() {
-		var oTable1 = $('#sample-table-2').dataTable( {
-			"aoColumnDefs": [
-			{ "bSortable": false, "aTargets": [0, -1] },
-			{ "bSearchable": false, "aTargets": [0, -1] },
-			] ,
-			"oLanguage": 
+		var oTable1 = $('#sample-table-2').DataTable(
 			{
-				"sSearch": "Tìm kiếm: ",
-				"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
-				 "sInfo": "Đang hiển thị dòng _START_ đến _END_  của tất cả _TOTAL_ dòng"
-			}
+				"aoColumnDefs": [
+					{ "bSortable": false, "aTargets": [-1, 0, 1] },
+					{ "bSearchable": false, "aTargets": [0, -1] },
+				],
 
+				"oLanguage": {
+					"sSearch": "Tìm kiếm: ",
+					"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
+					 "sInfo": "Đang hiển thị dòng _START_ đến _END_  của tất cả _TOTAL_ dòng"
+				},
+				"order": [[ 1, 'asc' ]]
+			} );
+
+	  oTable1.on( 'order.dt search.dt', function () {
+              oTable1.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                  cell.innerHTML = i+1;
+              } );
+          } ).draw();
+	 
 			
-		} );
-
 
 		$('table th input:checkbox').on('click' , function(){
 			var that = this;
@@ -125,6 +132,26 @@
 			if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
 			return 'left';
 		}
-	})
+	});
+	
+	// funtion callDel () {
+		// TODO
+		// loop for each elements to get id
+		// yourArr[...]
+		// call to route delete and attach yourArr -- 
+		// $.DELETE({ 
+		// 		url: 'yourRouteDel' ,
+		// 		data: yourArr,
+		// 		success: function(data) {
+		// 			handing
+		// 		}, 
+		// 		err: function() {
+		// 		}
+		// });
+		// 
+		// $.ajax({
+		// 	type: 'POST/PUT/DELETE/'
+		// })
+	
 </script>
 @endsection

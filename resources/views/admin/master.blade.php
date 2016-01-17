@@ -74,7 +74,7 @@
 
             <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
               <span class="btn btn-success"></span>
-
+              
               <span class="btn btn-info"></span>
 
               <span class="btn btn-warning"></span>

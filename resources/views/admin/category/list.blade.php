@@ -42,7 +42,7 @@
 						
 							<td class="center">
 								<label>
-									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}"/>
+									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}" />
 									<span class="lbl"></span>
 								</label>
 							</td>
@@ -52,9 +52,6 @@
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
 							<td class="td-actions">
 								<div class="hidden-phone visible-desktop action-buttons">
-									<a class="blue" href="#">
-										<i class="icon-zoom-in bigger-130"></i>
-									</a>
 
 									<a class="green" href="{{ route('admin.category.edit', $category->slug) }}">
 										<i class="icon-pencil bigger-130"></i>
@@ -134,6 +131,7 @@
 		}
 	});
 	
+
 	// funtion callDel () {
 		// TODO
 		// loop for each elements to get id
@@ -152,6 +150,9 @@
 		// $.ajax({
 		// 	type: 'POST/PUT/DELETE/'
 		// })
+		// //
+
+
 	
 </script>
 @endsection

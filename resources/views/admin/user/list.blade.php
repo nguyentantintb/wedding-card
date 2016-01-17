@@ -34,7 +34,7 @@
 							<th class="hidden-480">Update</th>
 							<th class="hidden-phone">
 								<i class="icon-time bigger-110 hidden-phone"></i>
-								Update
+								Action
 							</th>
 
 						</tr>
@@ -45,7 +45,6 @@
 						@foreach($user as $users)
 						<?php $stt = $stt + 1;?>
 						<tr>
-
 							<td class="center">
 								<label>
 									<input type="checkbox" />
@@ -56,8 +55,7 @@
 							<td>{{ $users->name }}</td>
 							<td>{{ $users->email }}</td>
 							<td class="hidden-480">Member</td>
-							<td class="hidden-phone">{{ date('F d, Y', strtotime($users->update_at)) }}</td>
-
+							<td class="hidden-phone">{{ date('F d, Y', strtotime($users->updated_at)) }}</td>
 							<td class="td-actions">
 								<div class="hidden-phone visible-desktop action-buttons">
 									<a class="blue" href="#">

@@ -97,7 +97,7 @@
 
 
   <li>
-    <a href="#">
+    <a href="{{ url('admin/gallery') }}">
       <i class="icon-picture"></i>
       <span class="menu-text"> Gallery </span>
     </a>

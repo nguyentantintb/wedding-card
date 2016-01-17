@@ -11,7 +11,6 @@
   <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
 
-
   <!-- Chua can thiet
   <link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
   <link rel="stylesheet" href="/assets/css/chosen.css" />
@@ -207,7 +206,6 @@
       <script src="/assets/js/flot/jquery.flot.min.js"></script>
       <script src="/assets/js/flot/jquery.flot.pie.min.js"></script>
       <script src="/assets/js/flot/jquery.flot.resize.min.js"></script>
-
       <!--ace scripts-->
       <script src="/assets/js/ace-elements.min.js"></script>
       <script src="/assets/js/ace.min.js"></script>

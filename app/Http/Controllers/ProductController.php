@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\ProductRequest;
 use App\Http\Requests;
+use App\Http\ProductRequests;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
@@ -74,9 +75,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->category_id = $request->category_id;
+        $product->resluggify();
+        $product->save();
+        return redirect('admin/product');
     }
 
     /**

@@ -57,9 +57,21 @@
 
 					</div>
 				</div>
+				<div class="control-group">
+					<label class="control-label" for="form-field-4">Hình ảnh</label>
 
+					<div class="controls">
 
-
+					<div class="ace-file-input" style="width: 223px;" >
+					<input type="file" id="id-input-file-2">
+					<label data-title="Choose">
+						<span data-title="No File ...">
+							<i class="icon-upload-alt"></i>
+						</span>
+					</label>
+					<a class="remove" href="#"><i class="icon-remove"></i></a>
+				</div>
+</div>
 				<div class="space-4"></div>
 				<div class="form-actions">
 					<button class="btn btn-info" type="submit">
@@ -95,5 +107,21 @@ $(function () {
     return true;
   });
 });
+</script>
+
+<script>
+	$('#id-input-file-2').ace_file_input({
+		no_file:'No File ...',
+		btn_choose:'Choose',
+		btn_change:'Change',
+		droppable:false,
+		onchange:null,
+		thumbnail:false //| true | large
+		//whitelist:'gif|png|jpg|jpeg'
+		//blacklist:'exe|php'
+		//onchange:''
+		//
+	});
+
 </script>
 @endsection	

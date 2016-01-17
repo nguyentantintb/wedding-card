@@ -50,7 +50,7 @@
 							<td>{{ $category->name }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
-							<td class="td-actions">
+							<td class="td-actions" nowrap="">
 								<div class="hidden-phone visible-desktop action-buttons">
 
 									<a class="green" href="{{ route('admin.category.edit', $category->slug) }}">

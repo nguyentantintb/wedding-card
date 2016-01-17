@@ -29,12 +29,12 @@
 									<span class="lbl"></span>
 								</label>
 							</th>
-							<th>STT</th>
-							<th>Sản phẩm</th>
-							<th>Giá</th>
+							<th class="hidden-480 center" nowrap>STT</th>
+							<th class="hidden-480 center">Sản phẩm</th>
+							<th class="hidden-480 center" nowrap>Giá</th>
 							<th class="hidden-480">Mô tả</th>
-							<th>Loại thiệp</th>
-							<th class="hidden-480">Ngày cập nhật</th>
+							<th class="hidden-480 center">Loại thiệp</th>
+							<th class="hidden-480 center">Ngày cập nhật</th>
 
 							<th>Action</th>
 						</tr>
@@ -53,12 +53,12 @@
 								<td>
 									<a href="#">{{ $product->name }}</a>
 								</td>
-								<td>{{ $product->price }}</td>
+								<td nowrap="">{{ $product->price }}</td>
 								<td class="hidden-480">{{ $product->description }}</td>
 								<td class="hidden-480">{{ $product->category->name }}</td>
 								<td class="hidden-phone">{{ date('F d, Y', strtotime($product->updated_at))  }}</td>
 
-								<td class="td-actions">
+								<td class="td-actions" nowrap="">
 									<div class="hidden-phone visible-desktop action-buttons">
 
 										<a class="green" href="{{ route('admin.product.edit', $product->slug) }}">

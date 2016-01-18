@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
  <link rel="stylesheet" href="/css/parsley.css" />
  <link rel="stylesheet" href="/css/sweetalert2.css" />
+ <link rel="stylesheet" href="/assets/css/jquery.dataTables.min.css" />
 
   <!-- Chua can thiet
   <link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
@@ -33,7 +34,7 @@
       <link rel="stylesheet" href="/assets/css/ace.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-responsive.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
- 
+
 
 
     <!--[if lte IE 8]>

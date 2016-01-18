@@ -19,19 +19,19 @@
 				<div class="table-header">
 					Danh sách các loại thiệp
 				</div>
-				<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+				<table id="sample-table-2" class="display table-bordered ">
 					<thead>
 						<tr>
-							<th class="center">
+							<th class="hidden-480 center">
 								<label>
 									<input type="checkbox" />
 									<span class="lbl"></span>
 								</label>
 							</th>
 							<th class="hidden-480 center">STT</th>
-							<th class="hidden-480 center">Loại</th>
-							<th class="hidden-480 center">Ngày tạo</th>
-							<th class="hidden-480 center">Ngày cập nhật</th>
+							<th class="center">Danh mục</th>
+							<th class="hidden-480 hidden-phone center" nowrap >Ngày tạo</th>
+							<th class="hidden-480 hidden-phone center " nowrap>Ngày cập nhật</th>
 							<th class="center">Action</th>
 						</tr>
 					</thead>
@@ -40,28 +40,29 @@
 						@foreach($cate as $category)
 						<tr>
 						
-							<td class="center">
+							<td class="hidden-480 center">
 								<label>
 									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}" />
 									<span class="lbl"></span>
 								</label>
 							</td>
-							<td class="center"></td>
+							<td class="center hidden-480"></td>
 							<td>{{ $category->name }}</td>
-							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
-							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
-							<td class="td-actions" nowrap="">
-								<div class="hidden-phone visible-desktop action-buttons">
-
+							<td class="hidden-480 hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
+							<td class="hidden-480 hidden-phone">{{date('F d, Y', strtotime($category->updated_at)) }}</td>
+							<td class="td-actions">
+								<div class="action-buttons center">
+									<span>
 									<a class="green" href="{{ route('admin.category.edit', $category->slug) }}">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
-
-									<a>
-										{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE')) !!}
-										<button><i class="icon-trash bigger-130"></i></button>
+</span>
+									<span>
+										<a>{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE')) !!}
+										<i class="icon-trash bigger-130"></i>
 										{!! Form::close() !!}
-									</a>
+										</a>
+									</span>
 									
 								</div>
 							</td>
@@ -81,7 +82,7 @@
 
 <!--inline scripts related to this page-->
 <script type="text/javascript">
-	$(function() {
+	$(document).ready(function() {
 		var oTable1 = $('#sample-table-2').DataTable(
 			{
 				"aoColumnDefs": [
@@ -94,23 +95,47 @@
 					"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
 					 "sInfo": "Đang hiển thị dòng _START_ đến _END_  của tất cả _TOTAL_ dòng"
 				},
-				"order": [[ 1, 'asc' ]]
+				"order": [[ 2, 'asc' ]]
 			} );
 
+/**
+ * Ve them cot STT khong thay doi khi sort
+ * @param  {[type]} ) {                         oTable1.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {                  cell.innerHTML [STT tang dan]
+ */
 	  oTable1.on( 'order.dt search.dt', function () {
               oTable1.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
                   cell.innerHTML = i+1;
               } );
           } ).draw();
-	 
-			
+	
+
+/**
+ * Checkbox va to mau row khi click vao row do
+ */
+
+ 	$('#sample-table-2 tbody').on('click', 'tr', function() {
+ 		var cb = $(this).find(':checkbox');
+
+ 		cb.prop('checked', !cb.prop('checked')); //Tick vao checkbox khi tick vao row
+		$(this).toggleClass('selected', cb.prop('checked')) ; //To mau row theo trang thai cua checkbox
+ 	});
+
+	$('#sample-table-2 tbody :checkbox').click(function(e) {
+ 		e.stopPropagation();
+      		$(this).closest('tr').toggleClass('selected');
+ 	});
+  
+
+/**
+ * Check tat ca
+ */
 
 		$('table th input:checkbox').on('click' , function(){
 			var that = this;
 			$(this).closest('table').find('tr > td:first-child input:checkbox')
 			.each(function(){
 				this.checked = that.checked;
-				$(this).closest('tr').toggleClass('selected');
+				$(this).closest('tr').toggleClass('selected', $(this).prop('checked'));
 			});
 
 		});

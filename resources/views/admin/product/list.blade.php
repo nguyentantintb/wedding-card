@@ -18,23 +18,23 @@
 				<div class="table-header">
 					Kết quả cho Danh sách sản phẩm
 				</div>
-				<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+				<table id="sample-table-2" class="display table-bordered ">
 
 
 					<thead>
 						<tr>
-							<th class="center">
+							<th class="center hidden-480">
 								<label>
 									<input type="checkbox" />
 									<span class="lbl"></span>
 								</label>
 							</th>
-							<th class="hidden-480 center" nowrap>STT</th>
-							<th class="hidden-480 center">Sản phẩm</th>
-							<th class="hidden-480 center" nowrap>Giá</th>
-							<th class="hidden-480">Mô tả</th>
-							<th class="hidden-480 center">Loại thiệp</th>
-							<th class="hidden-480 center">Ngày cập nhật</th>
+							<th class="hidden-480 hidden-phone center" >STT</th>
+							<th class="center" >Sản phẩm</th>
+							<th class="center" >Giá</th>
+							<th>Mô tả</th>
+							<th class="hidden-480 hidden-phone">Loại thiệp</th>
+							<th class="hidden-480 hidden-phone center">Ngày cập nhật</th>
 
 							<th>Action</th>
 						</tr>
@@ -43,23 +43,23 @@
 					<tbody>
 						@foreach($products as $product)
 							<tr>
-								<td class="center">
+								<td class="center hidden-480">
 									<label>
 										<input type="checkbox" />
 										<span class="lbl"></span>
 									</label>
 								</td>
-								<td></td>
-								<td>
+								<td class="hidden-480 hidden-phone center"></td>
+								<td class="center">
 									<a href="#">{{ $product->name }}</a>
 								</td>
-								<td nowrap="">{{ $product->price }}</td>
-								<td class="hidden-480">{{ $product->description }}</td>
-								<td class="hidden-480">{{ $product->category->name }}</td>
-								<td class="hidden-phone">{{ date('F d, Y', strtotime($product->updated_at))  }}</td>
+								<td><div class="align-right">{{ $product->price }}</div></td>
+								<td>{{ $product->description }}</td>
+								<td class="hidden-480 hidden-phone">{{ $product->category->name }}</td>
+								<td class="hidden-480 hidden-phone center">{{ date('F d, Y', strtotime($product->updated_at))  }}</td>
 
-								<td class="td-actions" nowrap="">
-									<div class="hidden-phone visible-desktop action-buttons">
+								<td class="td-actions" nowrap>
+									<div class="action-buttons">
 
 										<a class="green" href="{{ route('admin.product.edit', $product->slug) }}">
 											<i class="icon-pencil bigger-130"></i>
@@ -70,41 +70,7 @@
 										<button><i class="icon-trash bigger-130"></i></button>
 										{!! Form::close() !!}
 										</a>
-									</div>
-
-									<div class="hidden-desktop visible-phone">
-										<div class="inline position-relative">
-											<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-												<i class="icon-caret-down icon-only bigger-120"></i>
-											</button>
-
-											<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
-												<li>
-													<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-														<span class="blue">
-															<i class="icon-zoom-in bigger-120"></i>
-														</span>
-													</a>
-												</li>
-
-												<li>
-													<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-														<span class="green">
-															<i class="icon-edit bigger-120"></i>
-														</span>
-													</a>
-												</li>
-
-												<li>
-													<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-														<span class="red">
-															<i class="icon-trash bigger-120"></i>
-														</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
+									</div>		
 								</td>
 							</tr>
 						@endforeach
@@ -144,13 +110,32 @@
           	} ).draw();
 		
 
+/**
+ * Checkbox va to mau row khi click vao row do
+ */
 
+ 	$('#sample-table-2 tbody').on('click', 'tr', function() {
+ 		var cb = $(this).find(':checkbox');
+
+ 		cb.prop('checked', !cb.prop('checked')); //Tick vao checkbox khi tick vao row
+		$(this).toggleClass('selected', cb.prop('checked')) ; //To mau row theo trang thai cua checkbox
+ 	});
+
+	$('#sample-table-2 tbody :checkbox').click(function(e) {
+ 		e.stopPropagation();
+      		$(this).closest('tr').toggleClass('selected');
+ 	});
+  
+
+/**
+ * Check tat ca
+ */
 		$('table th input:checkbox').on('click' , function(){
 			var that = this;
 			$(this).closest('table').find('tr > td:first-child input:checkbox')
 			.each(function(){
 				this.checked = that.checked;
-				$(this).closest('tr').toggleClass('selected');
+				$(this).closest('tr').toggleClass('selected', $(this).prop('checked'));
 			});
 		});
 

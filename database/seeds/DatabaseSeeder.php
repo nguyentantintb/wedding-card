@@ -1,26 +1,24 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        Model::unguard();
+class DatabaseSeeder extends Seeder {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run() {
+		Model::unguard();
 
-        $this->call(CategorySeeder::class);
-<<<<<<< HEAD
-=======
-        $this->call(ProductSeeder::class);
+		//$this->call(CategorySeeder::class);
 
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
+		//$this->call(ProductSeeder::class);
+		factory(App\User::class, 50)->create();
+		factory(App\Category::class, 50)->create();
+		factory(App\Product::class, 50)->create();
 
-        Model::reguard();
-    }
+		Model::reguard();
+	}
 }

@@ -2,7 +2,6 @@
 @section('content')
 <div class="page-content">
 	<div class="page-header position-relative">
-		
 		<h1>
 			Tables
 			<small>
@@ -39,7 +38,6 @@
 					<tbody>
 						@foreach($cate as $category)
 						<tr>
-						
 							<td class="hidden-480 center">
 								<label>
 									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}" />
@@ -56,7 +54,7 @@
 									<a class="green" href="{{ route('admin.category.edit', $category->slug) }}">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
-</span>
+									</span>
 									<span>
 										<a>{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE')) !!}
 										<i class="icon-trash bigger-130"></i>
@@ -138,46 +136,20 @@
 				$(this).closest('tr').toggleClass('selected', $(this).prop('checked'));
 			});
 
-		});
+			$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+				function tooltip_placement(context, source) {
+					var $source = $(source);
+					var $parent = $source.closest('table')
+					var off1 = $parent.offset();
+					var w1 = $parent.width();
 
+					var off2 = $source.offset();
+					var w2 = $source.width();
 
-		$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-		function tooltip_placement(context, source) {
-			var $source = $(source);
-			var $parent = $source.closest('table')
-			var off1 = $parent.offset();
-			var w1 = $parent.width();
-
-			var off2 = $source.offset();
-			var w2 = $source.width();
-
-			if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
-			return 'left';
-		}
-	});
-	
-
-	// funtion callDel () {
-		// TODO
-		// loop for each elements to get id
-		// yourArr[...]
-		// call to route delete and attach yourArr -- 
-		// $.DELETE({ 
-		// 		url: 'yourRouteDel' ,
-		// 		data: yourArr,
-		// 		success: function(data) {
-		// 			handing
-		// 		}, 
-		// 		err: function() {
-		// 		}
-		// });
-		// 
-		// $.ajax({
-		// 	type: 'POST/PUT/DELETE/'
-		// })
-		// //
-
-
-	
+					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+					return 'left';
+				}
+			});
+			});
 </script>
 @endsection

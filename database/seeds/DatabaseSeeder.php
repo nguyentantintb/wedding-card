@@ -15,8 +15,11 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call(CategorySeeder::class);
+<<<<<<< HEAD
+=======
         $this->call(ProductSeeder::class);
 
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 
         Model::reguard();
     }

@@ -2,11 +2,6 @@
 @section('content')
 <div class="page-content">
 	<div class="page-header position-relative">
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 		<h1>
 			Tables
 			<small>
@@ -43,165 +38,97 @@
 					<tbody>
 						@foreach($cate as $category)
 						<tr>
-<<<<<<< HEAD
-
 							<td class="center">
 								<label>
 									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}"/>
-=======
-						
-							<td class="center">
-								<label>
-									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}" />
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
-									<span class="lbl"></span>
-								</label>
-							</td>
-							<td class="center"></td>
-							<td>{{ $category->name }}</td>
-							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
-							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
-							<td class="td-actions" nowrap="">
-								<div class="hidden-phone visible-desktop action-buttons">
+									<td class="center">
+										<label>
+											<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}" />
+											<span class="lbl"></span>
+										</label>
+									</td>
+									<td class="center"></td>
+									<td>{{ $category->name }}</td>
+									<td class="hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
+									<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
+									<td class="td-actions" nowrap="">
+										<div class="hidden-phone visible-desktop action-buttons">
 
-									<a class="green" href="{{ route('admin.category.edit', $category->slug) }}">
-										<i class="icon-pencil bigger-130"></i>
-									</a>
+											<a class="green" href="{{ route('admin.category.edit', $category->slug) }}">
+												<i class="icon-pencil bigger-130"></i>
+											</a>
 
-									<a>
-<<<<<<< HEAD
-										{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE', 'class'=>'ajax')) !!}
-										<button><i class="icon-trash bigger-130"></i></button>
-										{!! Form::close() !!}
-									</a>
+											<a>
+												{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE')) !!}
+												<button><i class="icon-trash bigger-130"></i></button>
+												{!! Form::close() !!}
+											</a>
+										</div>
+									</td>
+								</tr>
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+				</div><!--/.span-->
+			</div><!--/.row-fluid-->
+		</div><!--/.page-content-->
+		@endsection
 
-=======
-										{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE')) !!}
-										<button><i class="icon-trash bigger-130"></i></button>
-										{!! Form::close() !!}
-									</a>
-									
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
-								</div>
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
-			</div>
-		</div><!--/.span-->
-	</div><!--/.row-fluid-->
-</div><!--/.page-content-->
-@endsection
+		@section('script')
+		<script src="/assets/js/jquery.dataTables.min.js"></script>
+		<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
 
-@section('script')
-<script src="/assets/js/jquery.dataTables.min.js"></script>
-<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
-
-<!--inline scripts related to this page-->
-<script type="text/javascript">
-	$(function() {
-		var oTable1 = $('#sample-table-2').DataTable(
-			{
-				"aoColumnDefs": [
+		<!--inline scripts related to this page-->
+		<script type="text/javascript">
+			$(function() {
+				var oTable1 = $('#sample-table-2').DataTable(
+				{
+					"aoColumnDefs": [
 					{ "bSortable": false, "aTargets": [-1, 0, 1] },
 					{ "bSearchable": false, "aTargets": [0, -1] },
-				],
+					],
 
-				"oLanguage": {
-					"sSearch": "Tìm kiếm: ",
-					"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
-					 "sInfo": "Đang hiển thị dòng _START_ đến _END_  của tất cả _TOTAL_ dòng"
-				},
-				"order": [[ 1, 'asc' ]]
-			} );
-<<<<<<< HEAD
+					"oLanguage": {
+						"sSearch": "Tìm kiếm: ",
+						"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
+						"sInfo": "Đang hiển thị dòng _START_ đến _END_  của tất cả _TOTAL_ dòng"
+					},
+					"order": [[ 1, 'asc' ]]
+				} );
 
-	  oTable1.on( 'order.dt search.dt', function () {
-              oTable1.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                  cell.innerHTML = i+1;
-              } );
-          } ).draw();
+				oTable1.on( 'order.dt search.dt', function () {
+					oTable1.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+						cell.innerHTML = i+1;
+					} );
+				} ).draw();
 
-=======
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 
-	  oTable1.on( 'order.dt search.dt', function () {
-              oTable1.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                  cell.innerHTML = i+1;
-              } );
-          } ).draw();
-	 
-			
 
-		$('table th input:checkbox').on('click' , function(){
-			var that = this;
-			$(this).closest('table').find('tr > td:first-child input:checkbox')
-			.each(function(){
-				this.checked = that.checked;
-				$(this).closest('tr').toggleClass('selected');
+				$('table th input:checkbox').on('click' , function(){
+					var that = this;
+					$(this).closest('table').find('tr > td:first-child input:checkbox')
+					.each(function(){
+						this.checked = that.checked;
+						$(this).closest('tr').toggleClass('selected');
+					});
+
+				});
+
+
+				$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+				function tooltip_placement(context, source) {
+					var $source = $(source);
+					var $parent = $source.closest('table')
+					var off1 = $parent.offset();
+					var w1 = $parent.width();
+
+					var off2 = $source.offset();
+					var w2 = $source.width();
+
+					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+					return 'left';
+				}
 			});
-
-		});
-
-
-		$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-		function tooltip_placement(context, source) {
-			var $source = $(source);
-			var $parent = $source.closest('table')
-			var off1 = $parent.offset();
-			var w1 = $parent.width();
-
-			var off2 = $source.offset();
-			var w2 = $source.width();
-
-			if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
-			return 'left';
-		}
-	});
-<<<<<<< HEAD
-=======
-	
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
-
-	// funtion callDel () {
-		// TODO
-		// loop for each elements to get id
-		// yourArr[...]
-<<<<<<< HEAD
-		// call to route delete and attach yourArr --
-		// $.DELETE({
-=======
-		// call to route delete and attach yourArr -- 
-		// $.DELETE({ 
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
-		// 		url: 'yourRouteDel' ,
-		// 		data: yourArr,
-		// 		success: function(data) {
-		// 			handing
-<<<<<<< HEAD
-		// 		},
-		// 		err: function() {
-		// 		}
-		// });
-		//
-		// $.ajax({
-		// 	type: 'POST/PUT/DELETE/'
-		// })
-
-=======
-		// 		}, 
-		// 		err: function() {
-		// 		}
-		// });
-		// 
-		// $.ajax({
-		// 	type: 'POST/PUT/DELETE/'
-		// })
-		// //
-
-
-	
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 </script>
 @endsection

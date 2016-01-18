@@ -10,10 +10,7 @@
   <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
-<<<<<<< HEAD
 
-=======
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
  <link rel="stylesheet" href="/css/parsley.css" />
  <link rel="stylesheet" href="/css/sweetalert2.css" />
 
@@ -31,7 +28,7 @@
       <link rel="stylesheet" href="/assets/css/ace.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-responsive.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
- 
+
 
 
 
@@ -74,7 +71,7 @@
 
             <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
               <span class="btn btn-success"></span>
-              
+
               <span class="btn btn-info"></span>
 
               <span class="btn btn-warning"></span>
@@ -215,14 +212,6 @@
       <script src="/js/sweetalert2.min.js"></script>
       <script src="/js/myscript.js"></script>
 
-<<<<<<< HEAD
-      <script src="/js/parsley.min.js"></script>
-      <script src="/js/sweetalert2.min.js"></script>
-
-
-=======
-    
->>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
       <!--ace scripts-->
       <script src="/assets/js/ace-elements.min.js"></script>
       <script src="/assets/js/ace.min.js"></script>

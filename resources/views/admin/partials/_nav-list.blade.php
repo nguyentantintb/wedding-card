@@ -2,28 +2,28 @@
   <li class="active">
     <a href="#">
       <i class="icon-dashboard"></i>
-      <span class="menu-text"> Dashboard </span>
+      <span class="menu-text"> Bảng điều khiển </span>
     </a>
   </li>
 
   <li>
     <a href="#" class="dropdown-toggle">
       <i class="icon-desktop"></i>
-      <span class="menu-text"> Category </span>
+      <span class="menu-text"> Thể loại thiệp </span>
       <b class="arrow icon-angle-down"></b>
     </a>
     <ul class="submenu">
       <li>
         <a href="{{ route('admin.category.index') }}">
           <i class="icon-double-angle-right"></i>
-          List Category
+          Danh sách các loại
         </a>
       </li>
 
       <li>
         <a href="{{ route('admin.category.create') }}">
           <i class="icon-double-angle-right"></i>
-          Add Category
+         Thêm loại thiệp mới
         </a>
       </li>
     </ul>
@@ -32,21 +32,21 @@
   <li>
     <a href="#" class="dropdown-toggle">
       <i class="icon-list"></i>
-      <span class="menu-text"> Product </span>
+      <span class="menu-text"> Sản phẩm </span>
       <b class="arrow icon-angle-down"></b>
     </a>
     <ul class="submenu">
       <li>
         <a href="{{ route('admin.product.index') }}">
           <i class="icon-double-angle-right"></i>
-          List Product
+          Danh sách sản phẩm
         </a>
       </li>
 
       <li>
         <a href="{{ route('admin.product.create') }}">
           <i class="icon-double-angle-right"></i>
-          Add Product
+          Thêm sản phẩm
         </a>
       </li>
     </ul>
@@ -55,7 +55,7 @@
   <li>
     <a href="#" class="dropdown-toggle">
       <i class="icon-camera-retro"></i>
-      <span class="menu-text"> Product Images </span>
+      <span class="menu-text"> Hình ảnh sản phẩm </span>
 
       <b class="arrow icon-angle-down"></b>
     </a>

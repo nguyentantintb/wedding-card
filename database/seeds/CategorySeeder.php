@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-
-class DatabaseSeeder extends Seeder
+use App\Category;
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,10 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
-        $this->call(CategorySeeder::class);
-
-        Model::reguard();
-    }
+            factory(App\Category::class, 50)->create();
+    }  
 }

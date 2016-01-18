@@ -2,6 +2,7 @@
 @section('content')
 <div class="page-content">
 	<div class="page-header position-relative">
+
 		<h1>
 			Tables
 			<small>
@@ -16,7 +17,7 @@
 			<!--PAGE CONTENT BEGINS-->
 			<div class="row-fluid">
 				<div class="table-header">
-					Results for "List Category"
+					Danh sách các loại thiệp
 				</div>
 				<table id="sample-table-2" class="table table-striped table-bordered table-hover">
 					<thead>
@@ -27,29 +28,26 @@
 									<span class="lbl"></span>
 								</label>
 							</th>
-							<th class="hidden-480">STT</th>
-							<th>Category Name</th>
-							<th>Slug</th>
-							<th class="hidden-480">created at</th>
-							<th class="hidden-480">updated at</th>
-							<th>Action</th>
+							<th class="hidden-480 center">STT</th>
+							<th class="hidden-480 center">Loại</th>
+							<th class="hidden-480 center">Ngày tạo</th>
+							<th class="hidden-480 center">Ngày cập nhật</th>
+							<th class="center">Action</th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<?php $stt = 0;?>
 						@foreach($cate as $category)
-						<?php $stt = $stt + 1;?>
 						<tr>
+
 							<td class="center">
 								<label>
-									<input type="checkbox" />
+									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}"/>
 									<span class="lbl"></span>
 								</label>
 							</td>
-							<td>{{ $stt }}</td>
+							<td class="center"></td>
 							<td>{{ $category->name }}</td>
-							<td>{{ $category->slug }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
 							<td class="td-actions">
@@ -58,13 +56,16 @@
 										<i class="icon-zoom-in bigger-130"></i>
 									</a>
 
-									<a class="green" href="#">
+									<a class="green" href="{{ route('admin.category.edit', $category->slug) }}">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 
-									<a class="red" href="#" method="delete">
-										<i class="icon-trash bigger-130"></i>
+									<a>
+										{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE', 'class'=>'ajax')) !!}
+										<button><i class="icon-trash bigger-130"></i></button>
+										{!! Form::close() !!}
 									</a>
+
 								</div>
 							</td>
 						</tr>
@@ -80,15 +81,31 @@
 @section('script')
 <script src="/assets/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+
 <!--inline scripts related to this page-->
 <script type="text/javascript">
 	$(function() {
-		var oTable1 = $('#sample-table-2').dataTable( {
-			"aoColumns": [
-			{ "bSortable": false },
-			null, null,null, null, null,
-			{ "bSortable": false }
-			] } );
+		var oTable1 = $('#sample-table-2').DataTable(
+			{
+				"aoColumnDefs": [
+					{ "bSortable": false, "aTargets": [-1, 0, 1] },
+					{ "bSearchable": false, "aTargets": [0, -1] },
+				],
+
+				"oLanguage": {
+					"sSearch": "Tìm kiếm: ",
+					"sLengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
+					 "sInfo": "Đang hiển thị dòng _START_ đến _END_  của tất cả _TOTAL_ dòng"
+				},
+				"order": [[ 1, 'asc' ]]
+			} );
+
+	  oTable1.on( 'order.dt search.dt', function () {
+              oTable1.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                  cell.innerHTML = i+1;
+              } );
+          } ).draw();
+
 
 
 		$('table th input:checkbox').on('click' , function(){
@@ -115,6 +132,26 @@
 			if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
 			return 'left';
 		}
-	})
+	});
+
+	// funtion callDel () {
+		// TODO
+		// loop for each elements to get id
+		// yourArr[...]
+		// call to route delete and attach yourArr --
+		// $.DELETE({
+		// 		url: 'yourRouteDel' ,
+		// 		data: yourArr,
+		// 		success: function(data) {
+		// 			handing
+		// 		},
+		// 		err: function() {
+		// 		}
+		// });
+		//
+		// $.ajax({
+		// 	type: 'POST/PUT/DELETE/'
+		// })
+
 </script>
 @endsection

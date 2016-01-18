@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller {
 	/**
@@ -13,7 +14,7 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$cate = Category::all();
+		$cate = Category::orderBy('name','asc')->get();
 		return view('admin.category.list', compact('cate'));
 	}
 
@@ -32,7 +33,7 @@ class CategoryController extends Controller {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request) {
+	public function store(CategoryRequest $request) {
 		Category::create($request->all());
 		return redirect('admin/category');
 	}
@@ -54,8 +55,8 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
-		$cate = Category::find($id);
-		return view('admin.category.edit');
+		$cate = Category::findBySlug($id);
+		return view('admin.category.edit', compact('cate'));
 	}
 
 	/**
@@ -65,8 +66,12 @@ class CategoryController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id) {
-		//
+	public function update(CategoryRequest $request, $id) {
+		$cate = Category::find($id);
+		$cate->name = $request->name;
+		$cate->resluggify(); //update slug khi update name
+		$cate->save();
+		return redirect('admin/category');
 	}
 
 	/**
@@ -76,6 +81,8 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-		//
+		$cate = Category::findOrFail($id);
+		$cate->delete();
+		return redirect()->back();
 	}
 }

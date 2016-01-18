@@ -11,14 +11,11 @@
   <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
 
-  <!-- Chua can thiet
+ <link rel="stylesheet" href="/css/parsley.css" />
+ <link rel="stylesheet" href="/css/sweetalert2.css" />
+
   <link rel="stylesheet" href="/assets/css/jquery-ui-1.10.3.custom.min.css" />
   <link rel="stylesheet" href="/assets/css/chosen.css" />
--->
-
-    <!--[if IE 7]>
-      <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
-      <![endif]-->
 
       <!--page specific plugin styles-->
        @yield('styles')
@@ -31,6 +28,8 @@
       <link rel="stylesheet" href="/assets/css/ace.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-responsive.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+
+
 
     <!--[if lte IE 8]>
       <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
@@ -200,16 +199,24 @@
       <![endif]-->
       <script src="/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
       <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
+      <script src="/assets/js/chosen.jquery.min.js"></script>
       <script src="/assets/js/jquery.slimscroll.min.js"></script>
       <script src="/assets/js/jquery.easy-pie-chart.min.js"></script>
       <script src="/assets/js/jquery.sparkline.min.js"></script>
       <script src="/assets/js/flot/jquery.flot.min.js"></script>
       <script src="/assets/js/flot/jquery.flot.pie.min.js"></script>
       <script src="/assets/js/flot/jquery.flot.resize.min.js"></script>
+
+      <script src="/js/parsley.min.js"></script>
+      <script src="/js/sweetalert2.min.js"></script>
+
+
       <!--ace scripts-->
       <script src="/assets/js/ace-elements.min.js"></script>
       <script src="/assets/js/ace.min.js"></script>
+
       <!-- my srript-->
+      <script src="/js/myscript.js"></script>
       <!--inline scripts related to this page-->
       @yield('script')
 </body>

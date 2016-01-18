@@ -3,10 +3,10 @@
 <div class="page-content">
 	<div class="page-header position-relative">
 		<h1>
-			Category
+			Loại thiệp
 			<small>
 				<i class="icon-double-angle-right"></i>
-				Create new category
+				Thêm loại mới
 			</small>
 		</h1>
 	</div><!--/.page-header-->
@@ -14,7 +14,7 @@
 		<div class="span12">
 			<!--PAGE CONTENT BEGINS-->
 			@include('admin.partials._error')
-			<form class="form-horizontal" action="{{ route('admin.category.store') }}" method="POST">
+			<form id="demo-form" data-parsley-validate="" class="form-horizontal" action="{{ route('admin.category.store') }}" method="POST">
 				<input type="hidden" name="_token" value="{!! csrf_token() !!}">
 				<div class="control-group">
 					<label class="control-label">Category Parent</label>
@@ -27,18 +27,20 @@
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="form-field-1">Category Name</label>
+					<label class="control-label" for="form-field-1">Tên loại thiệp</label>
 
 					<div class="controls">
-						<input type="text" id="form-field-1" placeholder="Category name" name="name" />
+						<input type="text" id="form-field-1" placeholder="Nhập tên loại thiệp" name="name" required="" minlength="6" />&nbsp;
+						{!! $errors->first('name') !!}
 					</div>
+
 				</div>
 
 				<div class="space-4"></div>
 				<div class="form-actions">
 					<button class="btn btn-info" type="submit">
 						<i class="icon-ok bigger-110"></i>
-						Submit
+						Thêm
 					</button>
 
 					&nbsp; &nbsp; &nbsp;
@@ -58,4 +60,16 @@
 @endsection
 @section('script')
 <script>$("div.alert").delay(3000).slideUp();</script>
+<script type="text/javascript">
+$(function () {
+  $('#demo-form').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  })
+  .on('form:submit', function() {
+    return true;
+  });
+});
+</script>
 @endsection

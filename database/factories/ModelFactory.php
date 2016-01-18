@@ -34,3 +34,9 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
 		'category_id' => rand(1, 6),
 	];
 });
+
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->sentence('3'),
+    ];
+});

@@ -15,6 +15,11 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
+//Redirect to List category when type /admin
+Route::get('admin', function (){
+	return Redirect('admin/category');
+});
+
 Route::group(['prefix' => 'admin'], function () {
 	Route::resource('product', 'ProductController');
 	Route::resource('category', 'CategoryController');

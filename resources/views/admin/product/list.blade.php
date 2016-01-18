@@ -86,6 +86,7 @@
 @section('script')
 <script src="/assets/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+
 <!--inline scripts related to this page-->
 <script type="text/javascript">
 	$(function() {
@@ -150,9 +151,7 @@
 			var off2 = $source.offset();
 			var w2 = $source.width();
 
-			if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
-			return 'left';
-		}
-	});
-</script>
+<script src="/js/datatable.js"></script>
+
+
 @endsection

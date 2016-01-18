@@ -60,18 +60,9 @@
 				<div class="control-group">
 					<label class="control-label" for="form-field-4">Hình ảnh</label>
 
-					<div class="controls">
-
-						<div class="ace-file-input" style="width: 223px;" >
-							<input type="file" id="id-input-file-2">
-							<label data-title="Choose">
-								<span data-title="No File ...">
-									<i class="icon-upload-alt"></i>
-								</span>
-							</label>
-							<a class="remove" href="#"><i class="icon-remove"></i></a>
-						</div>
-
+					<div class="controls" style="width: 220px;">
+							<input type="file" id="id-input-file-2" >
+							<input multiple="" type="file" id="id-input-file-3" />
 					</div>
 
 				</div>
@@ -98,34 +89,11 @@
 </div><!--/.row-fluid-->
 </div><!--/.page-content-->
 @endsection
+
+
+
 @section('script')
 <script>$("div.alert").delay(3000).slideUp();</script>
-<script type="text/javascript">
-	$(function () {
-		$('#demo-form').parsley().on('field:validated', function() {
-			var ok = $('.parsley-error').length === 0;
-			$('.bs-callout-info').toggleClass('hidden', !ok);
-			$('.bs-callout-warning').toggleClass('hidden', ok);
-		})
-		.on('form:submit', function() {
-			return true;
-		});
-	});
-</script>
-<script>
-
-	$('#id-input-file-2').ace_file_input({
-		no_file:'No File ...',
-		btn_choose:'Choose',
-		btn_change:'Change',
-		droppable:false,
-		onchange:null,
-					thumbnail:false //| true | large
-					//whitelist:'gif|png|jpg|jpeg'
-					//blacklist:'exe|php'
-					//onchange:''
-					//
-				});
-
-</script>
+<script src="/js/validation.js"></script>
+<script src="/js/image.js"></script>
 @endsection

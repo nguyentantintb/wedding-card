@@ -30,7 +30,7 @@
   </li>
 
   <li>
-    <a href="#" class="dropdown-toggle">
+    <a href="{{ route('admin.product.index') }}" class="dropdown-toggle">
       <i class="icon-list"></i>
       <span class="menu-text"> Sản phẩm </span>
       <b class="arrow icon-angle-down"></b>

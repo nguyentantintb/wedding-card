@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Photo;
 use App\Product;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class ProductController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		//
+		$products = Product::orderBy('name', 'asc')->get();
+		return view('admin.product.list', compact('products'));
 	}
 
 	/**
@@ -62,7 +64,9 @@ class ProductController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
-		//
+		$product = Product::findBySlug($id);
+		$categories = Category::all();
+		return view('admin.product.edit', compact('product', 'categories'));
 	}
 
 	/**
@@ -72,8 +76,15 @@ class ProductController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id) {
-		//
+	public function update(ProductRequest $request, $id) {
+		$product = Product::find($id);
+		$product->name = $request->name;
+		$product->price = $request->price;
+		$product->description = $request->description;
+		$product->category_id = $request->category_id;
+		$product->resluggify();
+		$product->save();
+		return redirect('admin/product');
 	}
 
 	/**
@@ -83,6 +94,8 @@ class ProductController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-		//
+		$product = Product::findOrFail($id);
+		$product->delete();
+		return redirect()->back();
 	}
 }

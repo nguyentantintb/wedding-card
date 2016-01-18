@@ -4,16 +4,22 @@
 	<div class="page-header position-relative">
 		<h1>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			Category
 			<small>
 				<i class="icon-double-angle-right"></i>
 				Create new category
 =======
+=======
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 			Loại thiệp
 			<small>
 				<i class="icon-double-angle-right"></i>
 				Sửa loại thiệp
+<<<<<<< HEAD
 >>>>>>> 7be3ca5525b9aca4a6d1e63e6f0d48145dfa84c4
+=======
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 			</small>
 		</h1>
 	</div><!--/.page-header-->
@@ -22,11 +28,15 @@
 			<!--PAGE CONTENT BEGINS-->
 			@include('admin.partials._error')
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<form class="form-horizontal" action="#" method="POST">
 				<input type="hidden" name="_token" value="{!! csrf_token() !!}">
 =======
 			{!! Form::open(array('route'=>array('admin.category.update', $cate->id), 'method' => 'PUT', 'class' => 'form-horizontal')) !!}
 >>>>>>> 7be3ca5525b9aca4a6d1e63e6f0d48145dfa84c4
+=======
+			{!! Form::open(array('route'=>array('admin.category.update', $cate->id), 'method' => 'PUT', 'class' => 'form-horizontal')) !!}
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 				<div class="control-group">
 					<label class="control-label">Category Parent</label>
 
@@ -39,11 +49,14 @@
 
 				<div class="control-group">
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<label class="control-label" for="form-field-1">Category Name</label>
 
 					<div class="controls">
 						<input type="text" id="form-field-1" placeholder="Category name" name="name" />
 =======
+=======
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 					<label class="control-label" for="form-field-1">Tên mới</label>
 
 					<div class="controls">
@@ -52,7 +65,10 @@
 						{!! $errors->first('name') !!}
 
 						
+<<<<<<< HEAD
 >>>>>>> 7be3ca5525b9aca4a6d1e63e6f0d48145dfa84c4
+=======
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 					</div>
 				</div>
 
@@ -61,10 +77,14 @@
 					<button class="btn btn-info" type="submit">
 						<i class="icon-ok bigger-110"></i>
 <<<<<<< HEAD
+<<<<<<< HEAD
 						Submit
 =======
 						Sửa
 >>>>>>> 7be3ca5525b9aca4a6d1e63e6f0d48145dfa84c4
+=======
+						Sửa
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 					</button>
 
 					&nbsp; &nbsp; &nbsp;
@@ -76,10 +96,14 @@
 				<div class="hr"></div>
 				<div class="space-24"></div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			</form>
 =======
 			{!! Form::close()!!}
 >>>>>>> 7be3ca5525b9aca4a6d1e63e6f0d48145dfa84c4
+=======
+			{!! Form::close()!!}
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 		</div>
 	</div><!--PAGE CONTENT ENDS-->
 </div><!--/.span-->
@@ -89,7 +113,11 @@
 @section('script')
 <script>$("div.alert").delay(3000).slideUp();</script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 @endsection
 =======
 @endsection	
 >>>>>>> 7be3ca5525b9aca4a6d1e63e6f0d48145dfa84c4
+=======
+@endsection	
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad

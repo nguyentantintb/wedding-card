@@ -2,7 +2,11 @@
 @section('content')
 <div class="page-content">
 	<div class="page-header position-relative">
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 		<h1>
 			Tables
 			<small>
@@ -39,10 +43,17 @@
 					<tbody>
 						@foreach($cate as $category)
 						<tr>
+<<<<<<< HEAD
 
 							<td class="center">
 								<label>
 									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}"/>
+=======
+						
+							<td class="center">
+								<label>
+									<input type="checkbox" class="call-checkbox" value="{!! $category->id !!}" />
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 									<span class="lbl"></span>
 								</label>
 							</td>
@@ -50,22 +61,27 @@
 							<td>{{ $category->name }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->created_at)) }}</td>
 							<td class="hidden-phone">{{ date('F d, Y', strtotime($category->updated_at)) }}</td>
-							<td class="td-actions">
+							<td class="td-actions" nowrap="">
 								<div class="hidden-phone visible-desktop action-buttons">
-									<a class="blue" href="#">
-										<i class="icon-zoom-in bigger-130"></i>
-									</a>
 
 									<a class="green" href="{{ route('admin.category.edit', $category->slug) }}">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 
 									<a>
+<<<<<<< HEAD
 										{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE', 'class'=>'ajax')) !!}
 										<button><i class="icon-trash bigger-130"></i></button>
 										{!! Form::close() !!}
 									</a>
 
+=======
+										{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE')) !!}
+										<button><i class="icon-trash bigger-130"></i></button>
+										{!! Form::close() !!}
+									</a>
+									
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 								</div>
 							</td>
 						</tr>
@@ -99,6 +115,7 @@
 				},
 				"order": [[ 1, 'asc' ]]
 			} );
+<<<<<<< HEAD
 
 	  oTable1.on( 'order.dt search.dt', function () {
               oTable1.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
@@ -106,7 +123,16 @@
               } );
           } ).draw();
 
+=======
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 
+	  oTable1.on( 'order.dt search.dt', function () {
+              oTable1.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                  cell.innerHTML = i+1;
+              } );
+          } ).draw();
+	 
+			
 
 		$('table th input:checkbox').on('click' , function(){
 			var that = this;
@@ -133,17 +159,27 @@
 			return 'left';
 		}
 	});
+<<<<<<< HEAD
+=======
+	
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 
 	// funtion callDel () {
 		// TODO
 		// loop for each elements to get id
 		// yourArr[...]
+<<<<<<< HEAD
 		// call to route delete and attach yourArr --
 		// $.DELETE({
+=======
+		// call to route delete and attach yourArr -- 
+		// $.DELETE({ 
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 		// 		url: 'yourRouteDel' ,
 		// 		data: yourArr,
 		// 		success: function(data) {
 		// 			handing
+<<<<<<< HEAD
 		// 		},
 		// 		err: function() {
 		// 		}
@@ -153,5 +189,19 @@
 		// 	type: 'POST/PUT/DELETE/'
 		// })
 
+=======
+		// 		}, 
+		// 		err: function() {
+		// 		}
+		// });
+		// 
+		// $.ajax({
+		// 	type: 'POST/PUT/DELETE/'
+		// })
+		// //
+
+
+	
+>>>>>>> fb71b1e6678877ff78f8e530822bad2b7e25a1ad
 </script>
 @endsection

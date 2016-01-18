@@ -66,11 +66,11 @@
 										</a>
 
 										<a>
-											{!! Form::open(array('route'=>array('admin.product.destroy', $product->id), 'method' => 'DELETE')) !!}
+											{!! Form::open(array('route'=>array('admin.product.destroy', $product->id), 'method' => 'DELETE', 'class'=>'ajax')) !!}
 										<button><i class="icon-trash bigger-130"></i></button>
 										{!! Form::close() !!}
 										</a>
-									</div>		
+									</div>
 								</td>
 							</tr>
 						@endforeach
@@ -108,7 +108,7 @@
                   		cell.innerHTML = i+1;
               	} );
           	} ).draw();
-		
+
 
 /**
  * Checkbox va to mau row khi click vao row do
@@ -125,7 +125,7 @@
  		e.stopPropagation();
       		$(this).closest('tr').toggleClass('selected');
  	});
-  
+
 
 /**
  * Check tat ca

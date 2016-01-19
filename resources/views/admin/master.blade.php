@@ -208,14 +208,12 @@
       <script src="/assets/js/flot/jquery.flot.resize.min.js"></script>
       <script src="/js/parsley.min.js"></script>
       <script src="/js/sweetalert2.min.js"></script>
-      <script src="/js/myscript.js"></script>
 
       <!--ace scripts-->
       <script src="/assets/js/ace-elements.min.js"></script>
       <script src="/assets/js/ace.min.js"></script>
 
-      <!-- my srript-->
-      <script src="/js/myscript.js"></script>
+      
       <!--inline scripts related to this page-->
       @yield('script')
 </body>

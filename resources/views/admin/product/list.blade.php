@@ -66,7 +66,7 @@
 										</a>
 
 										<a>
-											{!! Form::open(array('route'=>array('admin.product.destroy', $product->id), 'method' => 'DELETE', 'class'=>'ajax')) !!}
+											{!! Form::open(array('route'=>array('admin.product.destroy', $product->id), 'method' => 'DELETE',  'class'=>'ajax')) !!}
 										<button><i class="icon-trash bigger-130"></i></button>
 										{!! Form::close() !!}
 										</a>
@@ -88,8 +88,7 @@
 <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
 
 <!--inline scripts related to this page-->
-
 <script src="/js/datatable.js"></script>
-
+<script src="/js/myscript.js"></script>
 
 @endsection

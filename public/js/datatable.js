@@ -37,8 +37,11 @@
  	});
 
 	$('#sample-table-2 tbody :checkbox').click(function(e) {
- 		e.stopPropagation();
       		$(this).closest('tr').toggleClass('selected');
+ 	});
+
+ 	$('#sample-table-2 tbody tr td').find('*').not('div').click(function(e) {
+ 		e.stopPropagation();
  	});
   
 

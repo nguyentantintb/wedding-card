@@ -56,8 +56,10 @@
 									</a>
 									</span>
 									<span>
-										<a>{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE')) !!}
+										<a>{!! Form::open(array('route'=>array('admin.category.destroy', $category->id), 'method' => 'DELETE', 'class' => 'ajax')) !!}
+										<button>
 										<i class="icon-trash bigger-130"></i>
+										</button>
 										{!! Form::close() !!}
 										</a>
 									</span>
@@ -77,7 +79,9 @@
 @section('script')
 <script src="/assets/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
-<script src="/js/datatable.js"></script>
+
 <!--inline scripts related to this page-->
 
+<script src="/js/datatable.js"></script>
+<script src="/js/myscript.js"></script>
 @endsection

@@ -12,11 +12,14 @@
  */
 
 Route::get('/', function () {
-	return view('welcome');
+	return view('pages.home');
 });
 
+Route::get('contact', 'PagesController@getContact');
+Route::get('shopping-cart', 'PagesController@getCart');
+
 //Redirect to List category when type /admin
-Route::get('admin', function (){
+Route::get('admin', function () {
 	return Redirect('admin/category');
 });
 
@@ -33,38 +36,11 @@ Route::group(['prefix' => 'admin'], function () {
 	});
 });
 
-Route::get('fakerUser', function () {
-	$faker = Faker\Factory::create();
-	for ($i = 0; $i < 10; $i++) {
-		$user = array(
-			'name' => $faker->name,
-			'email' => $faker->email,
-			'password' => \Hash::make('123456'),
-			'remember_token' => str_random(10),
-		);
-		App\User::create($user);
-	}
-});
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-Route::get('fakerCategory', function () {
-	$faker = Faker\Factory::create();
-	for ($i = 0; $i < 6; $i++) {
-		$cate = array(
-			'name' => $faker->word,
-		);
-		App\Category::create($cate);
-	}
-});
-
-Route::get('fakerProduct', function () {
-	$faker = Faker\Factory::create();
-	for ($i = 0; $i < 6; $i++) {
-		$product = array(
-			'name' => $faker->word,
-			'price' => 12000,
-			'description' => $faker->sentence(5),
-			'category_id' => rand(1, 6),
-		);
-		App\Product::create($product);
-	}
-});
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');

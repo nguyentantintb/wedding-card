@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>WeddingCard-Admin</title>
-
+<meta name="csrf-token" content="{!! csrf_token() !!}" />
   <meta name="description" content="overview &amp; stats" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!--basic styles-->
@@ -29,6 +29,9 @@
       <link rel="stylesheet" href="/assets/css/ace.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-responsive.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+      <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css
+" />
+
 
 
     <!--[if lte IE 8]>

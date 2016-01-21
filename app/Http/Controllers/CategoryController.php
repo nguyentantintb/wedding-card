@@ -14,8 +14,15 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$cate = Category::orderBy('name','asc')->get();
-		return view('admin.category.list', compact('cate'));
+		// $cate = Category::orderBy('name','asc')->get();
+		return view('admin.category.list');
+	}
+
+	//Lay thong tin tu table Categories
+	public function loadTable() {
+		$categories = Category::orderBy('name','asc')->get();
+		$categories_f = ['data' => $categories];
+		echo json_encode($categories_f);
 	}
 
 	/**
@@ -81,7 +88,7 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-		$cate = Category::findOrFail($id);
+		$cate = Category::findBySlug($id);
 		$cate->delete();
 		return redirect()->back();
 	}

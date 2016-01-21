@@ -26,15 +26,21 @@ Route::get('admin', function () {
 Route::group(['prefix' => 'admin'], function () {
 	Route::resource('product', 'ProductController');
 	Route::resource('category', 'CategoryController');
+	
 	Route::resource('user', 'UserController');
 	Route::resource('photo', 'PhotoController');
-	Route::get('gallery', function () {
+	Route::post('gallery', function () {
 		return view('admin.gallery.gallery');
 	});
 	Route::get('calendar', function () {
 		return view('admin.calendar.calendar');
 	});
 });
+
+Route::post('ajax/loadcategories', [
+			'as' => 'loadcategories',
+			'uses' => 'CategoryController@loadTable'
+		]);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

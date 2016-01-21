@@ -1,12 +1,8 @@
 $(document).ready(function() {
-   $.ajaxSetup({
-        headers: { 'X-CSRF-Token' : $('input[name=_token]').attr('value') }
-    }); 
-    $('form.ajax').on('submit',function(e){
+  
+    $('#sample-table-2 tbody').on('click', 'a.destroy', function(e){
         e.preventDefault();
-        var form = $(this);
-        var method = form.find('input[name="_method"]').val() || 'POST';
-
+        var url = $(this).attr('href');
         swal({
             title: 'Are you sure?',
             text: 'You will not be able to recover this imaginary file!',
@@ -25,7 +21,7 @@ $(document).ready(function() {
             if (isConfirm) {
                 $.ajax({
                     // type:method,
-                    url:form.prop('action'),
+                    url: url,
                     type:"post",
                   data: { _method:"DELETE" },
                     success: function(){
@@ -35,7 +31,8 @@ $(document).ready(function() {
                           type: "success",
                       },
                       function() {
-                          location.reload();
+                        var table = $('#sample-table-2').DataTable();
+                          table.ajax.reload();
                       });
                     }
                 });

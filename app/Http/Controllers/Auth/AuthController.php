@@ -63,7 +63,41 @@ class AuthController extends Controller {
 		return view('auth.login');
 	}
 
+	public function postLogin(LoginRequest $request) {
+		$auth = array(
+			'email' => $request->email,
+			'password' => $request->password,
+		);
+		if (Auth::attempt($auth)) {
+			$user = User::find(Auth::user()->id);
+			if ($user->name === 'Admin') {
+				return redirect('admin/dashboard');
+			} else {
+				return redirect('/');
+			}
+		} else {
+			return redirect('auth/login');
+		}
+	}
+
 	public function getRegister() {
 		return view('auth.register');
+	}
+
+	public function postRegister(RegisterRequest $request) {
+		$member = new User();
+		$member->name = $request->name;
+		$member->email = $request->email;
+		$member->password = Hash::make($request->password);
+		$member->remember_token = $request->_token;
+		$member->save();
+
+		return redirect('auth/login')->with(['flash_type' => 'alert-success', 'flash_message' => 'Register Sucsess!! Please Enter your account to login']);
+	}
+
+	public function getLogout() {
+		Auth::logout();
+
+		return redirect('/');
 	}
 }

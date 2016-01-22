@@ -38,62 +38,28 @@
               </ul>
             </div>
           </li>
-          <li><a href="product.html">Products</a>
-            <div>
-              <ul>
-                <li><a href="product.html">Product style 1</a>
-                </li>
-                <li><a href="product2.html">Product style 2</a>
-                </li>
-                <li><a href="#"> Women's Accessories</a>
-                </li>
-                <li><a href="#">Men's Accessories <span class="label label-success">Sale</span>
-                </a>
-              </li>
-              <li><a href="#">Dresses </a>
-              </li>
-              <li><a href="#">Shoes <span class="label label-warning">(25)</span>
-              </a>
-            </li>
-            <li><a href="#">Bags <span class="label label-info">(new)</span>
-            </a>
-          </li>
-          <li><a href="#">Sunglasses </a>
-          </li>
-        </ul>
-        <ul>
-          <li><img style="display:block" src="/img/proudctbanner.jpg" alt="" title="" >
-          </li>
-        </ul>
-      </div>
-    </li>
-    <li><a  href="category.html">Categories</a>
-    </li>
-    <li><a href="shopping-cart.html">Shopping Cart</a>
-    </li>
-    <li><a href="checkout.html">Checkout</a>
-    </li>
-    <li><a href="#">My Account</a>
-      <div>
-        <ul>
-          <li><a href="#">My Account</a>
-          </li>
-          <li><a href="#">Login</a>
-          </li>
-          <li><a href="#">Register</a>
-          </li>
-          <li><a href="#">Wishlist</a>
-          </li>
-        </ul>
-      </div>
-    </li>
-    <li><a href="#">Features</a>
-    </li>
-    <li><a href="#">Contact</a>
-    </li>
-  </ul>
-</nav>
-</div>
+        </li>
+        <li><a  href="#">Categories</a></li>
+        <li><a href="#">Shopping Cart</a></li>
+        <li><a href="#">Checkout</a></li>
+        <li><a href="#">My Account</a>
+          <div>
+            <ul>
+              @if(Auth::check())
+              <li><a href="#">My Account</a></li>
+              <li><a href="{{ url('auth/logout') }}">Logout</a></li>
+              @else
+              <li><a href="{{ url('auth/login') }}">Login</a></li>
+              <li><a href="{{ url('auth/register') }}">Register</a></li>
+              @endif
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Features</a></li>
+        <li><a href="{{ url('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </div>
 </header>
 <!-- Header End -->

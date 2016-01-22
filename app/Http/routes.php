@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('contact', 'PagesController@getContact');
+Route::post('contact', 'PagesController@postContact');
+
 Route::get('shopping-cart', 'PagesController@getCart');
 
 //Redirect to List category when type /admin
@@ -26,7 +28,7 @@ Route::get('admin', function () {
 Route::group(['prefix' => 'admin'], function () {
 	Route::resource('product', 'ProductController');
 	Route::resource('category', 'CategoryController');
-	
+
 	Route::resource('user', 'UserController');
 	Route::resource('photo', 'PhotoController');
 	Route::post('gallery', function () {
@@ -38,9 +40,9 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::post('ajax/loadcategories', [
-			'as' => 'loadcategories',
-			'uses' => 'CategoryController@loadTable'
-		]);
+	'as' => 'loadcategories',
+	'uses' => 'CategoryController@loadTable',
+]);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

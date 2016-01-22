@@ -40,19 +40,14 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::post('ajax/loadcategories', [
-<<<<<<< HEAD
 	'as' => 'loadcategories',
 	'uses' => 'CategoryController@loadTable',
 ]);
-=======
-			'as' => 'loadcategories',
-			'uses' => 'CategoryController@loadTable'
-		]);
+
 Route::post('ajax/loadproducts', [
-			'as' => 'loadproducts',
-			'uses' => 'ProductController@loadTable'
-		]);
->>>>>>> 8364787e8dd4124372b29941941f88bb6def547c
+	'as' => 'loadproducts',
+	'uses' => 'ProductController@loadTable',
+]);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

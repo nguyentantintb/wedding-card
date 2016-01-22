@@ -16,10 +16,14 @@ class ProductController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$products = Product::orderBy('name', 'asc')->get();
 		return view('admin.product.list', compact('products'));
 	}
-
+	//Lay thong tin tu table Categories
+	public function loadTable() {
+		$products = Product::orderBy('name','asc')->with('category')->get();
+		$products_f = ['data' => $products];
+		echo json_encode($products_f);
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -94,7 +98,7 @@ class ProductController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-		$product = Product::findOrFail($id);
+		$product = Product::findBySlug($id);
 		$product->delete();
 		return redirect()->back();
 	}

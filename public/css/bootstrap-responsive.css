@@ -11,7 +11,9 @@
 @-ms-viewport {
   width: device-width;
 }
-
+._myclass {
+  white-space: normal;
+}
 .clearfix {
   *zoom: 1;
 }

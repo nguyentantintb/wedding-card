@@ -14,7 +14,6 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		// $cate = Category::orderBy('name','asc')->get();
 		return view('admin.category.list');
 	}
 

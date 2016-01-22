@@ -29,8 +29,7 @@
       <link rel="stylesheet" href="/assets/css/ace.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-responsive.min.css" />
       <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
-      <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.dataTables.min.css
-" />
+      <link rel="stylesheet" href="/assets/css/responsive.dataTables.min.css" />
 
 
 

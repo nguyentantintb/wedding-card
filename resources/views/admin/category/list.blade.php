@@ -44,7 +44,7 @@
 @section('script')
 <script src="/assets/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.0.1/js/dataTables.responsive.min.js"></script>
+<script src="/assets/js/dataTables.responsive.min.js"></script>
 
 <!--inline scripts related to this page-->
 
@@ -116,9 +116,5 @@
 				},
 				"order": [[ 3, 'asc' ]]
 			} );
-
-	
- 
 </script>
-
 @endsection

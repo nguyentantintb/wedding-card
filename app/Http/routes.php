@@ -41,6 +41,10 @@ Route::post('ajax/loadcategories', [
 			'as' => 'loadcategories',
 			'uses' => 'CategoryController@loadTable'
 		]);
+Route::post('ajax/loadproducts', [
+			'as' => 'loadproducts',
+			'uses' => 'ProductController@loadTable'
+		]);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

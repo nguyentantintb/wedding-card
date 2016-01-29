@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use App\Photo;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File;
 
@@ -47,29 +48,33 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        if ($request->name !== null && $request->price !== null) {
-            $product              = new Product();
-            $product->category_id = $request->category_id;
-            $product->name        = $request->name;
-            $product->price       = $request->price;
-            $product->description = $request->description;
-            $product->save();
-            $product_id = $product->id;
-        };
+        // if ($request->name !== null && $request->price !== null) {
+        $product              = new Product();
+        $product->category_id = $request->category_id;
+        $product->name        = $request->name;
+        $product->price       = $request->price;
+        $product->description = $request->description;
+        $product->save();
+        $product_id = $product->id;
+        // };
         if ($request->hasFile('file')) {
             $files           = $request->file('file');
             $destinationPath = 'uploads';
-            $filename        = time() . '-' . $files->getClientOriginalName();
-            $files->move($destinationPath, $filename);
-            // $image = new Photo();
-            // $image->title = $filename;
-            // $image->product_id = $product_id;
-            // $image->save();
+            foreach ($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $file->move($destinationPath, $filename);
+                $photo        = new Photo();
+                $photo->title = $filename;
+                // $photo->image = $file-> 
+                $photo->product_id = $product_id;
+                $photo->save();
+            };
 
         };
-        return redirect()->back();
+        // return redirect()->back();
+        // return view('admin.product.test', compact('files'))  ;
     }
 
     /**

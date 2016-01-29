@@ -24,11 +24,10 @@ class ProductRequest extends Request
     public function rules()
     {
         return [
-            // 'name'        => 'required | max: 255 | min: 6',
-            // 'price'       => 'required | integer | max: 1000000',
-            // 'description' => 'max: 300',
-            // 'category_id' => 'required',
-            // 'file'        => 'required',
+            'name'        => 'required | max: 255 | min: 6',
+            'price'       => 'required | integer | max: 1000000',
+            'description' => 'max: 300',
+            'category_id' => 'required',
         ];
     }
 }

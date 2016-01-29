@@ -19,9 +19,7 @@
         <div class="span12">
             <!-- PAGE CONTENT BEGINS -->
             @include('admin.partials._error')
-
-
-            <form id="demo-form" data-parsley-validate="" action={{ route("admin.product.store") }} method = "POST" class="form-horizontal" enctype="multipart/form-data">
+            <form id="demo-form" data-parsley-validate="" action="{{ route('admin.product.store') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                 <div class="row-fluid ">
                     <div class="span6">
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}"/>
@@ -45,7 +43,7 @@
                                 Tên thiệp
                             </label>
                             <div class="controls">
-                                <input type="text" id="form-field-1" placeholder="Nhập tên thiệp" name="name"   />
+                                <input type="text" id="form-field-1" placeholder="Nhập tên thiệp" name="name"  minlength="6" required="" />
                             </div>
                         </div>
                         <div class="control-group">
@@ -53,7 +51,7 @@
                                 Giá Thiệp
                             </label>
                             <div class="controls">
-                                <input type="number"  id="form-field-2" placeholder="Nhập giá" name="price"   />
+                                <input type="number"  id="form-field-2" placeholder="Nhập giá" name="price" required=""  />
                             </div>
                         </div>
                         <div class="control-group">
@@ -131,7 +129,7 @@
                 <div class="space-4">
                 </div>
                 <div class="form-actions">
-                    <button class="btn btn-info start" >
+                    <button class="start btn btn-info" >
                         Thêm
                     </button>
                     &nbsp; &nbsp; &nbsp;
@@ -145,6 +143,7 @@
                 </div>
             </form>
         </div>
+
     </div>
     <!-- PAGE CONTENT ENDS -->
 </div>
@@ -172,10 +171,7 @@
 --}}
 
 <script>
-// $.ajaxSetup({
-// 	        headers: { 'X-CSRF-Token' : $('meta[name=csrf-token]').attr('content')}
-//    });
-var token = $('meta[name=csrf-token]').attr('content');
+	var token = $('meta[name=csrf-token]').attr('content');
 // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
 	var previewNode = document.querySelector("#drop-zone-template");
 	previewNode.id = "";
@@ -189,7 +185,6 @@ var token = $('meta[name=csrf-token]').attr('content');
 		params: {
                     _token: token
                   },
-		// method: "GET",
 		thumbnailWidth: 200,
 		thumbnailHeight: 120,
 		parallelUploads: 20,
@@ -201,17 +196,20 @@ var token = $('meta[name=csrf-token]').attr('content');
 		previewsContainer: "#previews", // Define the container to display the previews
 		clickable: ".drop-zone-clickable"    // Define the element that should be used as click trigger to select files.
 	});
+
 //Chuc nang cho Dropzone
 //
 //Start upload khi click submit
-	myDropzone.on("addedfile", function(file) {
-			document.querySelector(".start").onclick = function() {
-				// if( $('#demo-form').parsley().isValid() ) {
-	       			 myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
-				// };
-
-			// myDropzone.enqueueFile(file);
+	document.querySelector(".start").onclick = function(e) {
+		if( $('#demo-form').parsley().isValid() ) {
+	      		if (myDropzone.files.length > 0) {               
+				e.preventDefault();
+       			 myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+                    };                       
 		};
+	};	
+
+	myDropzone.on("addedfile", function(file) {
 		document.querySelector(".remove").onclick = function() {
 			myDropzone.removeFile(true);
 		};
@@ -224,7 +222,15 @@ var token = $('meta[name=csrf-token]').attr('content');
 	myDropzone.on("sending", function(file, xhr, formData) {
 		document.querySelector("#total-progress").style.opacity = "1";
 		//disable the start button
+		var CategoryIdInput = $('form select option:selected').val();	
+		var NameInput = $('form input[name="name"]').val();		
+		var PriceInput = $('form input[name="price"]').val();		
+		var DescriptionInput = $('form').find('textarea').val();
 		document.querySelector(".start").setAttribute("disabled", "disabled");
+		formData.append('category_id', CategoryIdInput);
+		formData.append('name', NameInput);
+		formData.append('price', PriceInput);
+		formData.append('description', DescriptionInput);
 	});
 //Hide the total progress bar when nothing's upload anymore
 	myDropzone.on("queuecomplete", function(progress) {
@@ -232,9 +238,6 @@ var token = $('meta[name=csrf-token]').attr('content');
 		document.querySelector(".start").removeAttribute("disabled");
 	});
 
- // document.querySelector(".start").onclick = function() {
- //        myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
- //      };
 </script>
 <script src="/js/validation.js"></script>
 @endsection

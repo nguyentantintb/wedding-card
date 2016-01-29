@@ -20,7 +20,7 @@
         <!-- page specific plugin styles -->
         @yield('styles')
         <!-- fonts -->
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+        <link rel="stylesheet" href="/assets/css/open_sans.css" />
         <!-- ace styles -->
         <link rel="stylesheet" href="/assets/css/ace.min.css" />
         <link rel="stylesheet" href="/assets/css/ace-responsive.min.css" />

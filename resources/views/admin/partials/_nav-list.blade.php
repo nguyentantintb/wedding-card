@@ -62,9 +62,9 @@
 
     <ul class="submenu">
       <li>
-        <a href="#">
+        <a href="{{ route('admin.photo.index') }}">
           <i class="icon-double-angle-right"></i>
-          Form Elements
+          Quản lý hình ảnh
         </a>
       </li>
     </ul>

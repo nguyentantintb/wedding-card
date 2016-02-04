@@ -61,7 +61,7 @@ class ProductController extends Controller
         // };
         if ($request->hasFile('file')) {
             $files           = $request->file('file');
-            $destinationPath = 'uploads';
+            $destinationPath = 'ckfinder/userfiles/images';
             foreach ($files as $file) {
                 $filename = $file->getClientOriginalName();
                 $file->move($destinationPath, $filename);

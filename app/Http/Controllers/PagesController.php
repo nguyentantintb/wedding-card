@@ -19,7 +19,7 @@ class PagesController extends Controller {
 		return view('pages.contact');
 	}
 
-	public function postContact(Request $request) {
+	public function sendContact() {
 		$data =
 			[
 			'name' => Request::input('name'),
@@ -27,6 +27,7 @@ class PagesController extends Controller {
 			'phonenumber' => Request::input('phonenumber'),
 			'messages' => Request::input('messages'),
 		];
+		dd($data);
 		Mail::queue('emails.blanks', $data, function ($msg) {
 			$msg->from('john@example.com', 'John David');
 			$msg->to('tinnguyentan.tb@gmal.com', 'Nguyen Tan Tin')->subject('Mail phản hồi của khách');

@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('contact', 'PagesController@getContact');
-Route::post('contact', 'PagesController@postContact');
+Route::post('send-contact', 'PagesController@sendContact');
 
 Route::get('shopping-cart', 'PagesController@getCart');
 

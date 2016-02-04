@@ -15,19 +15,19 @@
       <h1 class="heading1"><span class="maintext">Contact</span><span class="subtext"> Contact Us for more</span></h1>
       <div class="row">
         <div class="span9">
-          <form action="{{ url('contact') }}" class="form-horizontal contactform"  method="post">
+          <form action="{{ url('send-contact') }}" class="form-horizontal contactform"  method="POST">
              <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
             <fieldset>
               <div class="control-group">
                 <label for="name" class="control-label">Name <span class="required">*</span></label>
                 <div class="controls">
-                  <input type="text"  class="required" id="name" value="" name="name">
+                  <input type="text"  class="required" id="name"  name="name">
                 </div>
               </div>
               <div class="control-group">
                 <label for="email" class="control-label">Email <span class="required">*</span></label>
                 <div class="controls">
-                  <input type="email"  class="required email" id="email" value="" name="email">
+                  <input type="email"  class="required email" id="email"  name="email">
                 </div>
               </div>
               <div class="control-group">
@@ -43,8 +43,7 @@
                 </div>
               </div>
               <div class="form-actions">
-                <input class="btn btn-orange" type="submit" value="Submit" id="submit_id">
-                <input class="btn" type="reset" value="Reset">
+                <input class="btn btn-orange" type="submit" value="Send email" id="submit_id">
               </div>
             </fieldset>
           </form>

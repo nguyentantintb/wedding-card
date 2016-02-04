@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Mail;
+use Request;
 
 class PagesController extends Controller {
 	/**
@@ -22,7 +24,7 @@ class PagesController extends Controller {
 			'phonenumber' => Request::input('phonenumber'),
 			'messages' => Request::input('messages'),
 		];
-		Mail::send('emails.blanks', $data, function ($msg) {
+		Mail::queue('emails.blanks', $data, function ($msg) {
 			$msg->from('john@example.com', 'John David');
 			$msg->to('tinnguyentan.tb@gmal.com', 'Nguyen Tan Tin')->subject('Mail phản hồi của khách');
 		});

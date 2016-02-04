@@ -16,7 +16,7 @@
       <div class="row">
         <div class="span9">
           <form action="{{ url('contact') }}" class="form-horizontal contactform"  method="post">
-          <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
             <fieldset>
               <div class="control-group">
                 <label for="name" class="control-label">Name <span class="required">*</span></label>

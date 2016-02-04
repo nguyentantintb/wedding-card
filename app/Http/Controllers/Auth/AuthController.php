@@ -7,7 +7,10 @@ use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Validator;
-
+use Hash;
+use Auth;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 class AuthController extends Controller {
 	/*
 		    |--------------------------------------------------------------------------
@@ -70,7 +73,7 @@ class AuthController extends Controller {
 		);
 		if (Auth::attempt($auth)) {
 			$user = User::find(Auth::user()->id);
-			if ($user->name === 'Admin') {
+			if ($user->email === 'admin@gmail.com') {
 				return redirect('admin/dashboard');
 			} else {
 				return redirect('/');

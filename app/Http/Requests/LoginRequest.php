@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CategoryRequest extends Request
+class LoginRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,15 @@ class CategoryRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories,name|max: 255|min: 6',
+            'email' => 'required',
+            'password' => 'required',
         ];
     }
 
-    public function messages () {
+    public function messages() {
         return [
-            'name.required' => '* Không được để trống',
-            'name.unique' => '* Tên này đã tồn tại',
-            'name.min' => '* Tên phải dài hơn 6 ký tự',
+            'email.required' => 'Please Enter email',
+            'password.required' => 'Please Enter Password',
         ];
     }
 }

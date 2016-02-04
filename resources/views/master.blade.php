@@ -46,5 +46,6 @@
 <script type="text/javascript"  src="/js/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript"  src="/js/jquery.ba-throttle-debounce.min.js"></script>
 <script defer src="/js/custom.js"></script>
+<script defer src="/js/myscript.js"></script>
 </body>
 </html>

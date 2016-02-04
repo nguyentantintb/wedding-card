@@ -11,6 +11,16 @@
         </li>
         <li class="active">Login</li>
       </ul>
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+              <strong>Erorr!</strong> There were some problems with your input.<br><br>
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
        <!-- Account Login-->
       <div class="row">
         <div class="span9">
@@ -31,19 +41,22 @@
             <h2 class="heading2">Returning Customer </h2>
             <div class="loginbox">
               <h4 class="heading4">I am a returning customer</h4>
+              @if (Session::has('flash_message'))
+              <div class="alert {{ Session::get('flash_type') }}">{{ Session::get('flash_message') }}</div>
+              @endif
               <form class="form-vertical" action="{{ url('auth/login') }}" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                 <fieldset>
                   <div class="control-group">
                     <label  class="control-label">E-Mail Address:</label>
                     <div class="controls">
-                      <input type="email"  class="span3">
+                      <input type="email"  class="span3" name="email">
                     </div>
                   </div>
                   <div class="control-group">
                     <label  class="control-label">Password:</label>
                     <div class="controls">
-                      <input type="password"  class="span3">
+                      <input type="password"  class="span3" name="password">
                     </div>
                   </div>
                   <a class="" href="#">Forgotten Password</a>

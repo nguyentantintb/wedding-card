@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Mail;
 use Request;
+use Category;
 
 class PagesController extends Controller {
 	/**
@@ -12,6 +13,8 @@ class PagesController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
+	
+
 	public function getContact() {
 		return view('pages.contact');
 	}

@@ -39,7 +39,16 @@
             </div>
           </li>
         </li>
-        <li><a  href="#">Categories</a></li>
+        <li><a  href="#">Categories</a>
+        <?php $categories = DB::table('categories')->get(); ?>
+            <div>
+            <ul>
+               @foreach ($categories as $category)
+                <li><a href="#">{{ $category->name }}</a></li>
+              @endforeach
+            </ul>        
+            </div>
+        </li>
         <li><a href="#">Shopping Cart</a></li>
         <li><a href="#">Checkout</a></li>
         <li><a href="#">My Account</a>

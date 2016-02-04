@@ -14,6 +14,7 @@
 <link href="/css/flexslider.css" type="text/css" media="screen" rel="stylesheet"  />
 <link href="/css/jquery.fancybox.css" rel="stylesheet">
 <link href="/css/cloud-zoom.css" rel="stylesheet">
+ <link rel="stylesheet" href="/css/parsley.css" />
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -38,14 +39,15 @@
 <script src="/js/bootstrap-tooltip.js"></script>
 <script defer src="/js/jquery.fancybox.js"></script>
 <script defer src="/js/jquery.flexslider.js"></script>
-<script type="text/javascript" src="js/jquery.tweet.js"></script>
+<!--<script type="text/javascript" src="js/jquery.tweet.js"></script>-->
 <script  src="/js/cloud-zoom.1.0.2.js"></script>
 <script  type="text/javascript" src="/js/jquery.validate.js"></script>
-<script type="text/javascript"  src="/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+<!--<script type="text/javascript"  src="/js/jquery.carouFredSel-6.1.0-packed.js"></script>-->
 <script type="text/javascript"  src="/js/jquery.mousewheel.min.js"></script>
 <script type="text/javascript"  src="/js/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript"  src="/js/jquery.ba-throttle-debounce.min.js"></script>
-<script defer src="/js/custom.js"></script>
-<script defer src="/js/myscript.js"></script>
+<!--<script defer src="/js/custom.js"></script>-->
+<script src="/js/parsley.min.js"></script>
+<script  src="/js/myscript.js"></script>
 </body>
 </html>

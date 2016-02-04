@@ -34,35 +34,35 @@
           <li><a class="active"  href="{{ url('/') }}">Home</a></li>
         </li>
         <li><a  href="#">Categories</a>
-        <?php $categories = DB::table('categories')->get(); ?>
-            <div>
-            <ul>
-               @foreach ($categories as $category)
-                <li><a href="#">{{ $category->name }}</a></li>
-              @endforeach
-            </ul>        
-            </div>
-        </li>
-        <li><a href="{{ url('shopping-cart') }}">Shopping Cart</a></li>
-        <li><a href="#">Checkout</a></li>
-        <li><a href="#">My Account</a>
+          <?php $categories = DB::table('categories')->get(); ?>
           <div>
             <ul>
-              @if(Auth::check())
-              <li><a href="#">My Account</a></li>
-              <li><a href="{{ url('auth/logout') }}">Logout</a></li>
-              @else
-              <li><a href="{{ url('auth/login') }}">Login</a></li>
-              <li><a href="{{ url('auth/register') }}">Register</a></li>
-              @endif
-            </ul>
-          </div>
-        </li>
-        <li><a href="#">Features</a></li>
-        <li><a href="{{ url('contact') }}">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
+             @foreach ($categories as $category)
+             <li><a href="#">{{ $category->name }}</a></li>
+             @endforeach
+           </ul>        
+         </div>
+       </li>
+       <li><a href="{{ url('shopping-cart') }}">Shopping Cart</a></li>
+       <li><a href="#">Checkout</a></li>
+       <li><a href="#">My Account</a>
+        <div>
+          <ul>
+            @if(Auth::check())
+            <li><a href="#">My Account</a></li>
+            <li><a href="{{ url('auth/logout') }}">Logout</a></li>
+            @else
+            <li><a href="{{ url('auth/login') }}">Login</a></li>
+            <li><a href="{{ url('auth/register') }}">Register</a></li>
+            @endif
+          </ul>
+        </div>
+      </li>
+      <li><a href="#">Features</a></li>
+      <li><a href="{{ url('contact') }}">Contact</a></li>
+    </ul>
+  </nav>
+</div>
 </div>
 </header>
 <!-- Header End -->

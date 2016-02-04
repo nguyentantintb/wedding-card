@@ -21,13 +21,13 @@ class PagesController extends Controller {
 
 	public function sendContact() {
 		$data =
-			[
+		[
 			'name' => Request::input('name'),
 			'email' => Request::input('email'),
 			'phonenumber' => Request::input('phonenumber'),
 			'messages' => Request::input('messages'),
 		];
-		dd($data);
+
 		Mail::queue('emails.blanks', $data, function ($msg) {
 			$msg->from('john@example.com', 'John David');
 			$msg->to('tinnguyentan.tb@gmal.com', 'Nguyen Tan Tin')->subject('Mail phản hồi của khách');
@@ -36,10 +36,10 @@ class PagesController extends Controller {
 		alert('Cảm ơn bạn đã góp ý. Chúng tôi sẽ liện hệ với bạn trong thời gian sớm nhất');
 		window.location='" . url('/') . "'
 	</script>";
-	}
+}
 
-	public function getCart() {
-		return view('pages.shopping-cart');
-	}
+public function getCart() {
+	return view('pages.shopping-cart');
+}
 
 }

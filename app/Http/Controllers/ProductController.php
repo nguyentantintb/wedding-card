@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Intervention\Image\Facades\Image;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Product;
 use App\Photo;
+use App\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File;
+use Validator;
 
 // use Illuminate\Support\Facades\File;               //Tried both this with Request
 // use File;                                                              //This with File
@@ -60,18 +61,26 @@ class ProductController extends Controller
         $product_id = $product->id;
         // };
         if ($request->hasFile('file')) {
-            $files           = $request->file('file');
-            $destinationPath = 'ckfinder/userfiles/images';
+            $files = $request->file('file');
             foreach ($files as $file) {
-                $filename = $file->getClientOriginalName();
-                $file->move($destinationPath, $filename);
-                $photo        = new Photo();
-                $photo->title = $filename;
-                // $photo->image = $file-> 
-                $photo->product_id = $product_id;
-                $photo->save();
+                $rules     = array('file' => 'mimes:png,jpeg,jpg'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+                $validator = Validator::make(array('file' => $file), $rules);
+                if ($validator->passes()) {
+                    $destinationPath = 'uploads';
+                    $filename        = time() . '-' . $file->getClientOriginalName();
+                    $path = $destinationPath.'/'.$filename;
+                    $success         = $file->move($destinationPath, $filename);
+                    if ($success) {
+                        $thumbPath = 'uploads/thumbs/';
+                        $thumb1 = Image::make($path)->heighten(150)->save($thumbPath.$filename);
+                    };
+                    $photo        = new Photo();
+                    $photo->title = $filename;
+                    // $photo->image = $file->
+                    $photo->product_id = $product_id;
+                    $photo->save();
+                };
             };
-
         };
         // return redirect()->back();
         // return view('admin.product.test', compact('files'))  ;
@@ -97,8 +106,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product    = Product::findBySlug($id);
+        $product_id = $product->id;
         $categories = Category::all();
-        return view('admin.product.edit', compact('product', 'categories'));
+        $photos = Photo::where('product_id', '=', $product_id)->select('title')->get();
+        return view('admin.product.edit', compact('product', 'categories', 'photos'));
     }
 
     /**

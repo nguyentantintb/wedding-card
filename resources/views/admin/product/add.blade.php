@@ -186,7 +186,7 @@
                     _token: token
                   },
 		thumbnailWidth: 200,
-		thumbnailHeight: 120,
+		thumbnailHeight: 150,
 		parallelUploads: 20,
 		maxFilesize:20,
 		uploadMultiple: true,

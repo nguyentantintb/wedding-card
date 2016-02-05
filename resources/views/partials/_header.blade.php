@@ -10,11 +10,11 @@
             <div class="navbar" id="topnav">
               <div class="navbar-inner">
                 <ul class="nav" >
-                  <li><a class="home active" href="#">Home</a>
+                  <li><a class="home active" href="{{ url('/') }}">Home</a>
                   </li>
                   <li><a class="myaccount" href="#">My Account</a>
                   </li>
-                  <li><a class="shoppingcart" href="#">Shopping Cart</a>
+                  <li><a class="shoppingcart" href="{{ url('shopping-cart') }}">Shopping Cart</a>
                   </li>
                   <li><a class="checkout" href="#">CheckOut</a>
                   </li>
@@ -31,35 +31,38 @@
     <div id="categorymenu">
       <nav class="subnav">
         <ul class="nav-pills categorymenu">
-          <li><a class="active"  href="index-2.html">Home</a>
-            <div>
-              <ul>
-                <li><a href="index2.html">Home Style 2</a></li>
-              </ul>
-            </div>
-          </li>
+          <li><a class="active"  href="{{ url('/') }}">Home</a></li>
         </li>
-        <li><a  href="#">Categories</a></li>
-        <li><a href="#">Shopping Cart</a></li>
-        <li><a href="#">Checkout</a></li>
-        <li><a href="#">My Account</a>
+        <li><a  href="#">Categories</a>
+          <?php $categories = DB::table('categories')->get(); ?>
           <div>
             <ul>
-              @if(Auth::check())
-              <li><a href="#">My Account</a></li>
-              <li><a href="{{ url('auth/logout') }}">Logout</a></li>
-              @else
-              <li><a href="{{ url('auth/login') }}">Login</a></li>
-              <li><a href="{{ url('auth/register') }}">Register</a></li>
-              @endif
-            </ul>
-          </div>
-        </li>
-        <li><a href="#">Features</a></li>
-        <li><a href="{{ url('contact') }}">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
+             @foreach ($categories as $category)
+             <li><a href="#">{{ $category->name }}</a></li>
+             @endforeach
+           </ul>        
+         </div>
+       </li>
+       <li><a href="{{ url('shopping-cart') }}">Shopping Cart</a></li>
+       <li><a href="#">Checkout</a></li>
+       <li><a href="#">My Account</a>
+        <div>
+          <ul>
+            @if(Auth::check())
+            <li><a href="#">My Account</a></li>
+            <li><a href="{{ url('auth/logout') }}">Logout</a></li>
+            @else
+            <li><a href="{{ url('auth/login') }}">Login</a></li>
+            <li><a href="{{ url('auth/register') }}">Register</a></li>
+            @endif
+          </ul>
+        </div>
+      </li>
+      <li><a href="#">Features</a></li>
+      <li><a href="{{ url('contact') }}">Contact</a></li>
+    </ul>
+  </nav>
+</div>
 </div>
 </header>
 <!-- Header End -->

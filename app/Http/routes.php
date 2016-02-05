@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('contact', 'PagesController@getContact');
-Route::post('contact', 'PagesController@postContact');
+Route::post('send-contact', 'PagesController@sendContact');
 
 Route::get('shopping-cart', 'PagesController@getCart');
 
@@ -57,3 +57,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+// Route Controller Reset Password
+Route::controllers([
+	'password' => 'Auth\PasswordController',
+]);

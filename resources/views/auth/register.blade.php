@@ -11,6 +11,16 @@
       </li>
       <li class="active">Register Account</li>
     </ul>
+          @if (count($errors) > 0)
+            <div class="alert alert-danger">
+              <strong>Erorr!</strong> There were some problems with your input.<br><br>
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
     <div class="row">
       <!-- Register Account-->
       <div class="span9">

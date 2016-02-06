@@ -99,6 +99,9 @@
                     </div>
                     </div> 
                     {{-- het span 6 --}}
+                       @foreach ($photos as $photo)
+                       <a href='{{ route("admin.photo.destroy", "$photo->id") }}' class="destroy1">123</a>
+                       @endforeach
                     <div class="row-fluid">
                         <div class="span6">
                             <ul class="ace-thumbnails">
@@ -115,7 +118,8 @@
                                         <div class="text">
                                                 <div class="inner">{{ $photo->title }}</div>
                                             </div>
-                                        <div class="tools tools-top">
+                                    </a>
+                                     <div class="tools tools-top">
                                             <a href="#">
                                                 <i class="icon-link"></i>
                                             </a>
@@ -128,11 +132,10 @@
                                                 <i class="icon-pencil"></i>
                                             </a>
 
-                                            <a href="#">
+                                            <a href='{{ route("admin.photo.destroy", "$photo->id") }}' class="destroy">
                                                 <i class="icon-remove red"></i>
                                             </a>
                                         </div>
-                                    </a>
                                 </li>
                             @endforeach
                             </ul>
@@ -176,18 +179,7 @@
 <script>
     $("div.alert").delay(3000).slideUp();
 </script>
-<script type="text/javascript">
-    $(function () {
-    $('#demo-form').parsley().on('field:validated', function() {
-    var ok = $('.parsley-error').length === 0;
-    $('.bs-callout-info').toggleClass('hidden', !ok);
-    $('.bs-callout-warning').toggleClass('hidden', ok);
-    })
-    .on('form:submit', function() {
-    return true;
-    });
-    });
-</script>
+<script src="/js/validation.js"></script>
 <script>
     var colorbox_params = {
           rel: 'colorbox',
@@ -200,6 +192,7 @@
       current: '{current} of {total}',
      maxWidth: '100%',
     maxHeight: '100%',
+
    onComplete: function(){
      $.colorbox.resize();
    }
@@ -207,5 +200,26 @@
  
 $('[data-rel="colorbox"]').colorbox(colorbox_params);
 $('#cboxLoadingGraphic').append("<i class='icon-spinner orange'></i>");
+</script>
+
+<script>
+   $.ajaxSetup({
+                headers: { 'X-CSRF-Token' : $('meta[name=csrf-token]').attr('content')}
+    });
+    $(document).ready(function() {
+        
+        $('ul.ace-thumbnails div.tools').on('click', 'a.destroy', function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            $.ajax( {
+                url: url,
+                type: "POST",
+                data: {_method:"DELETE"},
+                success: function() {
+                    location.reload()
+                },
+            });
+        })
+    }) 
 </script>
 @endsection

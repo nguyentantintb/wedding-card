@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Photo;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use File;
 
 class PhotoController extends Controller
 {
@@ -82,6 +83,11 @@ class PhotoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $photo = Photo::find($id);
+        $title = $photo->title;
+        File::delete('uploads/'.$title);
+        File::delete('uploads/thumbs/'.$title);
+        $photo->delete();
+        return redirect()->back();
     }
 }

@@ -72,7 +72,7 @@ class ProductController extends Controller
                     $success         = $file->move($destinationPath, $filename);
                     if ($success) {
                         $thumbPath = 'uploads/thumbs/';
-                        $thumb1 = Image::make($path)->heighten(150)->save($thumbPath.$filename);
+                        $thumb1 = Image::make($path)->resize(200, 150)->save($thumbPath.$filename);
                     };
                     $photo        = new Photo();
                     $photo->title = $filename;
@@ -108,7 +108,7 @@ class ProductController extends Controller
         $product    = Product::findBySlug($id);
         $product_id = $product->id;
         $categories = Category::all();
-        $photos = Photo::where('product_id', '=', $product_id)->select('title')->get();
+        $photos = Photo::where('product_id', '=', $product_id)->get();
         return view('admin.product.edit', compact('product', 'categories', 'photos'));
     }
 

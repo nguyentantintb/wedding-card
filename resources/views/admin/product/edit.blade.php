@@ -1,6 +1,7 @@
 @extends('admin.master')
 @section('styles')
 <link rel="stylesheet" href="/assets/css/colorbox.css">
+<link href="/css/dropzone.min.css" rel="stylesheet" />
 @endsection
 @section('content')
 <div class="page-content">
@@ -20,13 +21,7 @@
         <div class="span12">
             <!-- PAGE CONTENT BEGINS -->
             @include('admin.partials._error')
-            {!! Form::open(array('route'=>
-            array('admin.product.update', $product->
-            id), 'method' =>
-            'PUT', 'class' =>
-            'form-horizontal', 'id' =>
-            'demo-form', 'data-parsley-validate' =>
-            "")) !!}
+            {!! Form::open(array('route'=>array('admin.product.update', $product->id), 'method' =>'PUT', 'class' =>'form-horizontal', 'id' =>'demo-form', 'data-parsley-validate' =>"")) !!}
             <div class="row-fluid ">
                 <div class="span6">
                     <div class="control-group">
@@ -58,7 +53,7 @@
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="form-field-1">
-                            Gía
+                            Giá
                         </label>
                         <div class="controls">
                             <input type="number" id="form-field-1" name="price" value="{{$product->price}}" type="number"	required="" />
@@ -71,43 +66,35 @@
                             Mô tả
                         </label>
                         <div class="controls">
-                            <textarea name="description" cols="30" required="" minlength="6" maxlength="300">
-                                {{$product->description}}
-                            </textarea>
+                            <textarea name="description" cols="30"  rows="5" required="" minlength="6" maxlength="300">{{$product->description}}</textarea>
                             {!! $errors->first('description') !!}
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="form-field-4">
-                            Hình ảnh
-                        </label>
-                        <div class="controls">
-                            <div class="ace-file-input" style="width: 223px;" >
-                                <input type="file" id="id-input-file-2"/>
-                                <label data-title="Choose">
-                                    <span data-title="No File ...">
-                                        <i class="icon-upload-alt">
-                                        </i>
-                                    </span>
-                                </label>
-                                <a class="remove" href="#">
-                                    <i class="icon-remove">
-                                    </i>
-                                </a>
+                     <div class="control-group" >
+                            <label class="control-label">
+                                Hình ảnh
+                            </label>
+                            <div  id="drop-zone" class="controls" style="width: 220px;">
+                                <div class="ace-file-input ace-file-multiple drop-zone-clickable">
+                                    <label data-title="Chọn hình ảnh cho sản phẩm">
+                                        <span>
+                                            <i class="icon-cloud-upload">
+                                            </i>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div> 
                     {{-- het span 6 --}}
-                       @foreach ($photos as $photo)
-                       <a href='{{ route("admin.photo.destroy", "$photo->id") }}' class="destroy1">123</a>
-                       @endforeach
                     <div class="row-fluid">
                         <div class="span6">
+                            <div class="row-fluid">
                             <ul class="ace-thumbnails">
                             @foreach ($photos as $photo)
                                 <li>
-                                    <a data-rel="colorbox" title="Phuoc dep trai" href="/uploads/{{ $photo->title }}">
+                                    <a data-rel="colorbox" title="{{ $product->
+                name }}" href="/uploads/{{ $photo->title }}">
                                         <img src="/uploads/thumbs/{{ $photo->title }}" />
                                         <div class="tags">
                                                 <span class="label label-info">breakfast</span>
@@ -140,12 +127,53 @@
                             @endforeach
                             </ul>
                         </div>
+                        <div class="space-10"></div>
+                        <!-- Preview DROPZONE -->
+                        <div id="previews" class="">
+                        <div class="item-template" id="drop-zone-template">
+                            {{-- <div class="span6"> --}}
+                                <div class="row-fluid">
+                                    <div class="span4 ace-file-input ace-file-multiple">
+                                        <label class="hide-placeholder selected">
+                                            <span>
+                                                <img data-dz-thumbnail />
+                                            </span>
+                                        </label>
+                                        <a data-dz-remove class="remove" href="#">
+                                            <i class="icon-remove">
+                                            </i>
+                                        </a>
+                                    </div>
+                                    <div class="span8">
+                                        <div class="space-4">
+                                        </div>
+                                        <div id="total-progress">
+                                            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width:70%;">
+                                                <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="name" data-dz-name>
+                                            </p>
+                                            <strong class="error text-danger" data-dz-errormessage>
+                                            </strong>
+                                            <p class="size" data-dz-size>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{-- </div> --}}
+                        </div>
+                    </div>
+                    {{-- Het DropZone --}}
+                        </div>
                     </div>
                     </div>
                     <div class="space-4">
                     </div>
                     <div class="form-actions">
-                        <button class="btn btn-info" type="submit">
+                        <button class="start btn btn-info" type="submit">
                             <i class="icon-ok bigger-110">
                             </i>
                             Sửa
@@ -175,11 +203,11 @@
 -->
 @endsection
 @section('script')
-<script src="/assets/js/jquery.colorbox-min.js" />
-<script>
-    $("div.alert").delay(3000).slideUp();
-</script>
+<script src="/assets/js/jquery.colorbox-min.js"></script>
+<script src="/js/dropzone.js"></script>
 <script src="/js/validation.js"></script>
+
+{{-- Gallery show hinh anh --}}
 <script>
     var colorbox_params = {
           rel: 'colorbox',
@@ -202,6 +230,7 @@ $('[data-rel="colorbox"]').colorbox(colorbox_params);
 $('#cboxLoadingGraphic').append("<i class='icon-spinner orange'></i>");
 </script>
 
+{{-- Chuc nang xoa hinh anh  --}}
 <script>
    $.ajaxSetup({
                 headers: { 'X-CSRF-Token' : $('meta[name=csrf-token]').attr('content')}
@@ -221,5 +250,81 @@ $('#cboxLoadingGraphic').append("<i class='icon-spinner orange'></i>");
             });
         })
     }) 
+</script>
+
+{{-- Preview cho DropZone --}}
+<script>
+    var token = $('meta[name=csrf-token]').attr('content');
+     var url = '{{ route("admin.product.update", ":product_id") }}';
+        url = url.replace(':product_id', {{ $product->id }});
+// Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+    var previewNode = document.querySelector("#drop-zone-template");
+    previewNode.id = "";
+    var previewTemplate = previewNode.parentNode.innerHTML;
+    previewNode.parentNode.removeChild(previewNode);
+//Khai bao vung DROPZONE
+    var myDropzone = new Dropzone("#drop-zone", {
+       
+        url: url,
+        method: 'POST',
+        paramName: "file",
+
+        params: {
+                    _token: token,
+                    _method: 'PUT'
+                  },
+        thumbnailWidth: 200,
+        thumbnailHeight: 150,
+        parallelUploads: 20,
+        maxFilesize:20,
+        uploadMultiple: true,
+        previewTemplate: previewTemplate,
+        autoQueue: false,
+        autoDiscover: false,
+        previewsContainer: "#previews", // Define the container to display the previews
+        clickable: ".drop-zone-clickable"    // Define the element that should be used as click trigger to select files.
+    });
+
+//Chuc nang cho Dropzone
+//
+//Start upload khi click submit
+    document.querySelector(".start").onclick = function(e) {
+        if( $('#demo-form').parsley().isValid() ) {
+                if (myDropzone.files.length > 0) {               
+                e.preventDefault();
+                 myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+                    };                       
+        };
+    };  
+
+    myDropzone.on("addedfile", function(file) {
+        document.querySelector(".remove").onclick = function() {
+            myDropzone.removeFile(true);
+        };
+    });
+//Update the total progress bar
+    myDropzone.on("totaluploadprogress", function(progress) {
+        document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+    });
+//Show the total progress bar when upload starts
+    myDropzone.on("sending", function(file, xhr, formData) {
+        document.querySelector("#total-progress").style.opacity = "1";
+        //disable the start button
+        var CategoryIdInput = $('form select option:selected').val();   
+        var NameInput = $('form input[name="name"]').val();     
+        var PriceInput = $('form input[name="price"]').val();       
+        var DescriptionInput = $('form').find('textarea').val();
+        document.querySelector(".start").setAttribute("disabled", "disabled");
+        formData.append('category_id', CategoryIdInput);
+        formData.append('name', NameInput);
+        formData.append('price', PriceInput);
+        formData.append('description', DescriptionInput);
+    });
+//Hide the total progress bar when nothing's upload anymore
+    myDropzone.on("queuecomplete", function(progress) {
+        document.querySelector("#total-progress").style.opacity = "0";
+        document.querySelector(".start").removeAttribute("disabled");
+    });
+
 </script>
 @endsection

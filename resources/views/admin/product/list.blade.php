@@ -94,7 +94,7 @@
 			            { "data": "updated_at", className: "desktop"},
 			       //Action Column
 			            {
-			            		"data": "slug", 
+			            	"data": "slug", 
 						"render": function ( data, type, full ) {
 								var url_edit = '{{ route("admin.product.edit", ":slug") }}';
 									url_edit = url_edit.replace(':slug', data);

@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Intervention\Image\Facades\Image;
+
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Photo;
 use App\Product;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File;
 use Validator;
 
@@ -28,8 +29,9 @@ class ProductController extends Controller
     //Lay thong tin tu table Categories
     public function loadTable()
     {
-        $products   = Product::orderBy('name', 'asc')->with('category')->get();
-        $products_f = ['data' => $products];
+        $products             = Product::orderBy('name', 'asc')->with('category')->get();
+        $products->updated_at = '100';
+        $products_f           = ['data' => $products];
         echo json_encode($products_f);
     }
     /**
@@ -68,15 +70,14 @@ class ProductController extends Controller
                 if ($validator->passes()) {
                     $destinationPath = 'uploads';
                     $filename        = time() . '-' . $file->getClientOriginalName();
-                    $path = $destinationPath.'/'.$filename;
+                    $path            = $destinationPath . '/' . $filename;
                     $success         = $file->move($destinationPath, $filename);
                     if ($success) {
                         $thumbPath = 'uploads/thumbs/';
-                        $thumb1 = Image::make($path)->resize(200, 150)->save($thumbPath.$filename);
+                        $thumb1    = Image::make($path)->resize(200, 150)->save($thumbPath . $filename);
                     };
-                    $photo        = new Photo();
-                    $photo->title = $filename;
-                    // $photo->image = $file->
+                    $photo             = new Photo();
+                    $photo->title      = $filename;
                     $photo->product_id = $product_id;
                     $photo->save();
                 };
@@ -108,7 +109,7 @@ class ProductController extends Controller
         $product    = Product::findBySlug($id);
         $product_id = $product->id;
         $categories = Category::all();
-        $photos = Photo::where('product_id', '=', $product_id)->get();
+        $photos     = Photo::where('product_id', '=', $product_id)->get();
         return view('admin.product.edit', compact('product', 'categories', 'photos'));
     }
 
@@ -128,7 +129,30 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->resluggify();
         $product->save();
-        return redirect('admin/product');
+
+        //Upload file
+        if ($request->hasFile('file')) {
+            $files = $request->file('file');
+            foreach ($files as $file) {
+                $rules     = array('file' => 'mimes:png,jpeg,jpg'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+                $validator = Validator::make(array('file' => $file), $rules);
+                if ($validator->passes()) {
+                    $destinationPath = 'uploads';
+                    $filename        = time() . '-' . $file->getClientOriginalName();
+                    $path            = $destinationPath . '/' . $filename;
+                    $success         = $file->move($destinationPath, $filename);
+                    if ($success) {
+                        $thumbPath         = 'uploads/thumbs/';
+                        $thumb1            = Image::make($path)->resize(200, 150)->save($thumbPath . $filename);
+                        $photo             = new Photo();
+                        $photo->title      = $filename;
+                        $photo->product_id = $id;
+                        $photo->save();
+                    };
+                };
+            };
+        };
+        return redirect()->back();
     }
 
     /**

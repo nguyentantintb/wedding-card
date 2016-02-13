@@ -59,8 +59,7 @@
                                 Mô tả thiệp
                             </label>
                             <div class="controls">
-                                <textarea name="description" id="form-field-3" cols="30" placeholder="Nhập mô tả">
-                                </textarea>
+                                <textarea name="description" id="form-field-3" cols="30" rows="5" placeholder="Nhập mô tả"></textarea>
                             </div>
                         </div>
                         <div class="control-group" >

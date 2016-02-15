@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Mail;
 use Request;
-use Category;
-
+use App\Category;
+use App\Product;
 class PagesController extends Controller {
 	/**
 	 * Display a listing of the resource.
@@ -14,6 +14,9 @@ class PagesController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	
+	public function index() {
+		return view('pages.home');
+	}
 
 	public function getContact() {
 		return view('pages.contact');
@@ -22,10 +25,10 @@ class PagesController extends Controller {
 	public function sendContact() {
 		$data =
 		[
-			'name' => Request::input('name'),
-			'email' => Request::input('email'),
-			'phonenumber' => Request::input('phonenumber'),
-			'messages' => Request::input('messages'),
+		'name' => Request::input('name'),
+		'email' => Request::input('email'),
+		'phonenumber' => Request::input('phonenumber'),
+		'messages' => Request::input('messages'),
 		];
 
 		Mail::queue('emails.blanks', $data, function ($msg) {
@@ -38,8 +41,14 @@ class PagesController extends Controller {
 	</script>";
 }
 
-public function getCart() {
-	return view('pages.shopping-cart');
-}
+	public function getCart() {
+		return view('pages.shopping-cart');
+	}
 
+	public function ProductOfCate($slug) {
+		 $cate_id = Category::where('slug', '=', $slug)->first();
+        $productOfcate = Product::where('category_id', $cate_id->id)->orderBy('created_at', 'DESC')->paginate(3);
+
+        return view('pages.category', compact('productOfcate'));
+	}
 }

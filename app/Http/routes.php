@@ -11,12 +11,14 @@
 |
  */
 
-Route::get('/', function () {
-	return view('pages.home');
-});
+// Route::get('/', function () {
+// 	return view('pages.home');
+// });
 
 Route::get('contact', 'PagesController@getContact');
+Route::get('/', 'PagesController@index');
 Route::post('send-contact', 'PagesController@sendContact');
+Route::get('category/{slug}', 'PagesController@ProductOfCate');
 
 Route::get('shopping-cart', 'PagesController@getCart');
 

@@ -15,7 +15,9 @@ class PagesController extends Controller {
 	 */
 	
 	public function index() {
-		return view('pages.home');
+		$banner_dir = "ckfinder/userfiles/images/banner/";
+		$banner_files = glob($banner_dir.'*.*');
+		return view('pages.home', compact('banner_files'));
 	}
 
 	public function getContact() {

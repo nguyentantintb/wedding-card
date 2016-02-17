@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>SimpleOne - A Responsive Html5 Ecommerce Template</title>
+<title>Wedding Card</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -46,7 +46,7 @@
 <script type="text/javascript"  src="/js/jquery.mousewheel.min.js"></script>
 <script type="text/javascript"  src="/js/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript"  src="/js/jquery.ba-throttle-debounce.min.js"></script>
-<!--<script defer src="/js/custom.js"></script>-->
+<script defer src="/js/custom.js"></script>
 <script src="/js/parsley.min.js"></script>
 <script  src="/js/myscript.js"></script>
 </body>

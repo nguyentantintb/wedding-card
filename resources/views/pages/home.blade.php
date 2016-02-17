@@ -6,18 +6,11 @@
     <div class="container">
       <div class="flexslider" id="mainslider">
         <ul class="slides">
+        @foreach($banner_files as $banner_file)
           <li>
-            <img src="/img/banner1.jpg" alt="" />
+            <img src="{{ $banner_file }}" alt="" />
           </li>
-          <li>
-            <img src="/img/banner2.jpg" alt="" />
-          </li>
-          <li>
-            <img src="/img/banner1.jpg" alt="" />
-          </li>
-          <li>
-            <img src="/img/banner2.jpg" alt="" />
-          </li>
+        @endforeach
         </ul>
       </div>
     </div>

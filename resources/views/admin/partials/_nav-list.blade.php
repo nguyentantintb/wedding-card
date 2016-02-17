@@ -55,7 +55,7 @@
   <li>
     <a href="#" class="dropdown-toggle">
       <i class="icon-camera-retro"></i>
-      <span class="menu-text"> Hình ảnh sản phẩm </span>
+      <span class="menu-text"> Quản lý hình ảnh </span>
 
       <b class="arrow icon-angle-down"></b>
     </a>
@@ -64,7 +64,7 @@
       <li>
         <a href="{{ route('admin.photo.index') }}">
           <i class="icon-double-angle-right"></i>
-          Quản lý hình ảnh
+          Quản lý
         </a>
       </li>
     </ul>

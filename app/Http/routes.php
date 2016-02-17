@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('user', 'UserController');
 	Route::resource('photo', 'PhotoController');
-	Route::post('gallery', function () {
+	Route::get('gallery', function () {
 		return view('admin.gallery.gallery');
 	});
 	Route::get('calendar', function () {

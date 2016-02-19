@@ -18,7 +18,6 @@
           <tr>
             <th class="image">Image</th>
             <th class="name">Product Name</th>
-            <th class="model">Model</th>
             <th class="quantity">Qty</th>
               <th class="total">Action</th>
             <th class="price">Unit Price</th>
@@ -28,7 +27,6 @@
           <tr>
             <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
             <td  class="name"><a href="#">Jeans</a></td>
-            <td class="model">Purchased Product</td>
             <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
 
              </td>
@@ -36,91 +34,6 @@
               <a href="#"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
 
 
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-
-          </tr>
-
-
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">T-shirt</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-             </td>
-             <td class="total"> <a href="#"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
-              <a href="#"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
-
-
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-
-          </tr>
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Shirt</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-             </td>
-             <td class="total"> <a href="#"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
-              <a href="#"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
-
-
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-
-          </tr>
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Camera</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-             </td>
-             <td class="total"> <a href="#"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
-              <a href="#"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
-
-
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-
-          </tr>
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Mobile</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-             </td>
-             <td class="total"> <a href="#"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
-              <a href="#"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
-
-
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-
-          </tr>
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Jeans</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-             </td>
-             <td class="total"> <a href="#"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
-              <a href="#"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-          </tr>
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Jeans</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-             </td>
-             <td class="total"> <a href="#"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
-              <a href="#"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
             <td class="price">$120.68</td>
             <td class="total">$120.68</td>
           </tr>

@@ -17,7 +17,8 @@ class PagesController extends Controller {
 	public function index() {
 		$banner_dir = "ckfinder/userfiles/images/banner/";
 		$banner_files = glob($banner_dir.'*.*');
-		return view('pages.home', compact('banner_files'));
+		$lastest_product = Product::orderBy('created_at', 'DESC')->limit(8)->get();
+		return view('pages.home', compact('banner_files','lastest_product'));
 	}
 
 	public function getContact() {

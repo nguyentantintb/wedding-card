@@ -53,7 +53,7 @@
           <a class="prdocutname" href="product.html">{{ $featured_product->product->name }}</a>
           <div class="thumbnail">
             <span class="offer tooltip-test" >Offer</span>
-            <a href="#"><img alt="" src="/uploads/{{ $featured_photo[$i]->title }}"></a>
+            <a href="#"><img alt="" src="/uploads/{{($featured_photo[$i])->title }}"></a>
             <div class="pricetag">
               <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
               <div class="price">
@@ -78,7 +78,7 @@
         <li class="span3">
           <a class="prdocutname" href="product.html">{{ $product->name }}</a>
           <div class="thumbnail">
-            <a href="#"><img alt="" src="/img/product1a.jpg"></a>
+            <a href="#"><img alt="" src="/uploads/default.jpg"></a>
             <div class="pricetag">
               <span class="spiral"></span><a href="{!! url('buy-product',[$product->slug]) !!}" class="productcart">ADD TO CART</a>
               <div class="price">

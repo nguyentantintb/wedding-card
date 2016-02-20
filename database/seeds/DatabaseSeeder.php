@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use App\Photo;
 
 class DatabaseSeeder extends Seeder {
 	/**
@@ -12,7 +13,7 @@ class DatabaseSeeder extends Seeder {
 	public function run() {
 		Model::unguard();
 
-		//$this->call(CategorySeeder::class);
+		// $this->call('PhotoSeeder');
 
 		//$this->call(ProductSeeder::class);
 		factory(App\User::class, 50)->create();
@@ -28,6 +29,15 @@ class DatabaseSeeder extends Seeder {
 				
 			]
 		);
+
+		for($i=1; $i<51; $i++){
+        	$photo = new Photo();
+        	$photo->title = "default.jpg";
+        	$photo->product_id = $i;
+        	$photo->save();
+        }
+
+
 
 		Model::reguard();
 	}

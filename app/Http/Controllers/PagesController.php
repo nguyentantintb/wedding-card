@@ -7,6 +7,7 @@ use Mail;
 use Request;
 use App\Category;
 use App\Product;
+use App\Photo;
 use App\FeaturedProduct;
 class PagesController extends Controller {
 	/**
@@ -18,8 +19,16 @@ class PagesController extends Controller {
 	public function index() {
 		$banner_dir = "ckfinder/userfiles/images/banner/";
 		$banner_files = glob($banner_dir.'*.*');
-		$featured_products = FeaturedProduct::all();
-		return view('pages.home', compact('banner_files','featured_products'));
+		$featured_products = FeaturedProduct::orderBy('rank','ASC')->get();
+		foreach($featured_products as $i){
+			$id[] = 
+				$i->product_id;
+		};
+		// dd($id);
+		$featured_photo = Photo::whereIn('product_id', [14,1,2])->get();
+		$lastest_product = Product::orderBy('created_at', 'DESC')->limit(8)->get();
+		dd($featured_photo);
+		return view('pages.home', compact('banner_files','lastest_product', 'featured_products','featured_photo'));
 	}
 
 	public function getContact() {

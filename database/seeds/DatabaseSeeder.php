@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder {
 				['rank' => '2', 'product_id' => '2'],
 				['rank' => '3', 'product_id' => '3'],
 				['rank' => '4', 'product_id' => '4'],
-				['rank' => '5', 'product_id' => '5'],
+				
 			]
 		);
 

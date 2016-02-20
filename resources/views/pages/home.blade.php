@@ -47,8 +47,9 @@
     <div class="container">
       <h1 class="heading1"><span class="maintext">Featured Products</span><span class="subtext"> See Our Most featured Products</span></h1>
       <ul class="thumbnails">
-        <li class="span3">
-          <a class="prdocutname" href="product.html">Product Name Here</a>
+        <li class="">
+          <a class="prdocutname" href="product.html">
+          </a>
           <div class="thumbnail">
             <span class="sale tooltip-test">Sale</span>
             <a href="#"><img alt="" src="/img/product1.jpg"></a>
@@ -101,7 +102,7 @@
             </div>
           </div>
         </li>
-      </ul>
+         </ul>
     </div>
   </section>
 

@@ -7,6 +7,7 @@ use Mail;
 use Request;
 use App\Category;
 use App\Product;
+use App\FeaturedProduct;
 class PagesController extends Controller {
 	/**
 	 * Display a listing of the resource.
@@ -17,7 +18,8 @@ class PagesController extends Controller {
 	public function index() {
 		$banner_dir = "ckfinder/userfiles/images/banner/";
 		$banner_files = glob($banner_dir.'*.*');
-		return view('pages.home', compact('banner_files'));
+		$featured_products = FeaturedProduct::all();
+		return view('pages.home', compact('banner_files','featured_products'));
 	}
 
 	public function getContact() {

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Photo;
-use File;
 use Illuminate\Http\Request;
 
-class PhotoController extends Controller
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\FeaturedProduct;
+use App\Category;
+use App\Product;
+use DB;
+
+class FeaturedProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +20,11 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        return view('admin.image.list');
+        $data = FeaturedProduct::orderBy('rank', 'asc')->with('product')->get();
+        $categories = Category::get();
+        $products = Product::get();
+        return view('admin.image.featured-product', compact('data', 'categories', 'products'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -38,7 +44,13 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $i = $request->product_id;
+        foreach($i as $key=>$product_id) {
+            $fp = FeaturedProduct::find($key+1);
+            $fp->product_id = $product_id;
+            $fp->save();
+        }
+        return redirect()->back();
     }
 
     /**
@@ -83,11 +95,6 @@ class PhotoController extends Controller
      */
     public function destroy($id)
     {
-        $photo = Photo::find($id);
-        $title = $photo->title;
-        File::delete('uploads/' . $title);
-        File::delete('uploads/thumbs/' . $title);
-        $photo->delete();
-        return redirect()->back();
+        //
     }
 }

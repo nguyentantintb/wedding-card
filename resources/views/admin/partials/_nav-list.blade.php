@@ -64,7 +64,13 @@
       <li>
         <a href="{{ route('admin.photo.index') }}">
           <i class="icon-double-angle-right"></i>
-          Quản lý
+          Quản lý banner
+        </a>
+      </li>
+       <li>
+        <a href="{{ route('admin.featured-product.index') }}">
+          <i class="icon-double-angle-right"></i>
+          Chọn sản phẩm nổi bật
         </a>
       </li>
     </ul>

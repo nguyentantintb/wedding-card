@@ -31,9 +31,8 @@
                         <div class="controls">
                             <select name="category_id">
                                 @foreach($categories as $category)
-                                <option value="{{ $category->id }}">
-                                    {{ $category->
-                                    name}}
+                                <option value="{{ $category->id }}" <?php if($category->id == $product->category_id) echo 'selected' ;?> >
+                                    {{ $category->name}}
                                 </option>
                                 @endforeach
                             </select>

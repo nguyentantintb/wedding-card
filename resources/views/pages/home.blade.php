@@ -47,13 +47,13 @@
     <div class="container">
       <h1 class="heading1"><span class="maintext">Featured Products</span><span class="subtext"> See Our Most featured Products</span></h1>
       <ul class="thumbnails">
+      <?php $i = 0; ?>
       @foreach($featured_products as $featured_product)
-      @foreach($featured_photo as $abc)
         <li class="span3">
           <a class="prdocutname" href="product.html">{{ $featured_product->product->name }}</a>
           <div class="thumbnail">
             <span class="offer tooltip-test" >Offer</span>
-            <a href="#"><img alt="" src="/uploads/{{ $abc->title }}"></a>
+            <a href="#"><img alt="" src="/uploads/{{ $featured_photo[$i]->title }}"></a>
             <div class="pricetag">
               <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
               <div class="price">
@@ -63,7 +63,7 @@
             </div>
           </div>
         </li>
-        @endforeach
+      <?php $i++ ; ?>
         @endforeach
          </ul>
     </div>

@@ -25,9 +25,9 @@ class PagesController extends Controller {
 				$i->product_id;
 		};
 		// dd($id);
-		$featured_photo = Photo::whereIn('product_id', [14,1,2])->get();
+		$featured_photo = Photo::whereIn('product_id', $id)->get();
 		$lastest_product = Product::orderBy('created_at', 'DESC')->limit(8)->get();
-		dd($featured_photo);
+		// dd($featured_p1hoto);
 		return view('pages.home', compact('banner_files','lastest_product', 'featured_products','featured_photo'));
 	}
 

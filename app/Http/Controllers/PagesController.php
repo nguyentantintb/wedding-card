@@ -8,6 +8,9 @@ use Request;
 use App\Category;
 use App\Product;
 use Cart;
+use App\Photo;
+use App\FeaturedProduct;
+
 class PagesController extends Controller {
 	/**
 	 * Display a listing of the resource.
@@ -18,8 +21,16 @@ class PagesController extends Controller {
 	public function index() {
 		$banner_dir = "ckfinder/userfiles/images/banner/";
 		$banner_files = glob($banner_dir.'*.*');
+		$featured_products = FeaturedProduct::orderBy('rank','ASC')->get();
+		foreach($featured_products as $i){
+			$id[] = 
+				$i->product_id;
+		};
+		// dd($id);
+		$featured_photo = Photo::whereIn('product_id', $id)->get();
 		$lastest_product = Product::orderBy('created_at', 'DESC')->limit(8)->get();
-		return view('pages.home', compact('banner_files','lastest_product'));
+		// dd($featured_p1hoto);
+		return view('pages.home', compact('banner_files','lastest_product', 'featured_products','featured_photo'));
 	}
 
 	public function getContact() {

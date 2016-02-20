@@ -7,6 +7,7 @@ use Mail;
 use Request;
 use App\Category;
 use App\Product;
+use Cart;
 class PagesController extends Controller {
 	/**
 	 * Display a listing of the resource.
@@ -44,14 +45,25 @@ class PagesController extends Controller {
 	</script>";
 }
 
-	public function getCart() {
-		return view('pages.shopping-cart');
-	}
+	
 
 	public function ProductOfCate($slug) {
-		 $cate_id = Category::where('slug', '=', $slug)->first();
+		$cate_id = Category::where('slug', '=', $slug)->first();
         $productOfcate = Product::where('category_id', $cate_id->id)->orderBy('created_at', 'DESC')->paginate(3);
 
         return view('pages.category', compact('productOfcate'));
+	}
+
+	public function ShoppingCart() {
+		$content = Cart::content();
+		return view('pages.shopping-cart',compact('content'));
+	}
+
+	public function buyProduct($slug)
+	{
+		$product = Product::findBySlug($slug)->first();
+		Cart::add(array('id' =>$product->id ,'name' => $product->name,'qty'=>1,'price' => $product->price ));
+		$content = Cart::content();
+		return redirect('shopping-cart');
 	}
 }

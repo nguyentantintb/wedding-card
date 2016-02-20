@@ -58,7 +58,6 @@
           </ul>
         </div>
       </li>
-      <li><a href="#">Features</a></li>
       <li><a href="{{ url('contact') }}">Contact</a></li>
     </ul>
   </nav>

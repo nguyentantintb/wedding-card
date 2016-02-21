@@ -45,19 +45,19 @@
   <!-- Featured Product-->
   <section id="featured" class="row mt40">
     <div class="container">
-      <h1 class="heading1"><span class="maintext">Featured Products</span><span class="subtext"> See Our Most featured Products</span></h1>
+      <h1 class="heading1"><span class="maintext">Sản phẩm nổi bật</span><span class="subtext"> Những mẫu thiệp bán chạy nhất</span></h1>
       <ul class="thumbnails">
       <?php $i = 0; ?>
       @foreach($featured_products as $featured_product)
         <li class="span3">
-          <a class="prdocutname" href="product.html">{{ $featured_product->product->name }}</a>
+          <a class="prdocutname" href="product.html"><strong>{{ $featured_product->product->name }}</strong></a>
           <div class="thumbnail">
             <span class="offer tooltip-test" >Offer</span>
             <a href="#"><img alt="" src="/uploads/{{($featured_photo[$i])->title }}"></a>
             <div class="pricetag">
-              <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
+              <span class="spiral"></span><a href="#" class="productcart">Thêm vào giỏ</a>
               <div class="price">
-                <div class="pricenew">{{ $featured_product->product->price }}</div>
+                <div class="pricenew">{{ $featured_product->product->price }}.000đ</div>
                 <div class="priceold">$5000.00</div>
               </div>
             </div>
@@ -72,17 +72,17 @@
   <!-- Latest Product-->
   <section id="latest" class="row">
     <div class="container">
-      <h1 class="heading1"><span class="maintext">Latest Products</span><span class="subtext"> See Our  Latest Products</span></h1>
+      <h1 class="heading1"><span class="maintext">Sản phẩm mới nhất</span><span class="subtext">Những mẫu thiệp mới nhất hiện nay</span></h1>
       <ul class="thumbnails">
       @foreach($lastest_product as $product)
         <li class="span3">
-          <a class="prdocutname" href="product.html">{{ $product->name }}</a>
+          <a class="prdocutname" href="product.html"><strong>{{ $product->name }}</strong></a>
           <div class="thumbnail">
             <a href="#"><img alt="" src="/uploads/default.jpg"></a>
             <div class="pricetag">
-              <span class="spiral"></span><a href="{!! url('buy-product',[$product->slug]) !!}" class="productcart">ADD TO CART</a>
+              <span class="spiral"></span><a href="{!! url('buy-product',[$product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
               <div class="price">
-                <div class="pricenew">${{ $product->price }}.000</div>
+                <div class="pricenew">{{ $product->price }}.000đ</div>
                
               </div>
             </div>

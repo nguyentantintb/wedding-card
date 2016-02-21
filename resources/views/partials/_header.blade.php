@@ -1,4 +1,4 @@
-<!-- Header Start -->
+<!--Header Start -->
 <header>
   <div class="headerstrip">
     <div class="container">
@@ -10,13 +10,13 @@
             <div class="navbar" id="topnav">
               <div class="navbar-inner">
                 <ul class="nav" >
-                  <li><a class="home active" href="{{ url('/') }}">Home</a>
+                  <li><a class="home active" href="{{ url('/') }}">TRANG CHỦ</a>
                   </li>
-                  <li><a class="myaccount" href="#">My Account</a>
+                  {{-- <li><a class="myaccount" href="#">My Account</a> --}}
+                  {{-- </li> --}}
+                  <li><a class="shoppingcart" href="{{ url('shopping-cart') }}">GIỎ HÀNG</a>
                   </li>
-                  <li><a class="shoppingcart" href="{{ url('shopping-cart') }}">Shopping Cart</a>
-                  </li>
-                  <li><a class="checkout" href="#">CheckOut</a>
+                  <li><a class="checkout" href="#">ĐẶT HÀNG</a>
                   </li>
                 </ul>
               </div>
@@ -31,9 +31,9 @@
     <div id="categorymenu">
       <nav class="subnav">
         <ul class="nav-pills categorymenu">
-          <li><a class="active"  href="{{ url('/') }}">Home</a></li>
+          <li><a class="active"  href="{{ url('/') }}">TRANG CHỦ</a></li>
         </li>
-        <li><a  href="#">Categories</a>
+        <li><a  href="#">LOẠI THIỆP </a>
           <?php $categories = DB::table('categories')->get(); ?>
           <div>
             <ul>
@@ -43,25 +43,25 @@
            </ul>        
          </div>
        </li>
-       <li><a href="{{ url('shopping-cart') }}">Shopping Cart</a></li>
-       <li><a href="#">Checkout</a></li>
-       <li><a href="#">My Account</a>
+       <li><a href="{{ url('shopping-cart') }}">GIỎ HÀNG</a></li>
+       <li><a href="#">ĐẶT HÀNG</a></li>
+       <li><a href="#">TÀI KHOẢN</a>
         <div>
           <ul>
             @if(Auth::check())
             <li><a href="#">My Account</a></li>
-            <li><a href="{{ url('auth/logout') }}">Logout</a></li>
+            <li><a href="{{ url('auth/logout') }}">ĐĂNG XUẤT</a></li>
             @else
-            <li><a href="{{ url('auth/login') }}">Login</a></li>
-            <li><a href="{{ url('auth/register') }}">Register</a></li>
+            <li><a href="{{ url('auth/login') }}">ĐĂNG NHẬP</a></li>
+            <li><a href="{{ url('auth/register') }}">ĐĂNG KÝ</a></li>
             @endif
           </ul>
         </div>
       </li>
-      <li><a href="{{ url('contact') }}">Contact</a></li>
+      <li><a href="{{ url('contact') }}">LIÊN HỆ</a></li>
     </ul>
   </nav>
 </div>
 </div>
 </header>
-<!-- Header End -->
+<!-- Header End

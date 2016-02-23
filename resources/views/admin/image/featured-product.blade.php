@@ -16,13 +16,13 @@
 				@include('admin.partials._error')
 				<form action="{{ route('admin.featured-product.store') }}" id="form1" method="POST" class="form-inline" >
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}"/>
-					@foreach ($data as $dt)
+					@foreach ($data as $key=>$dt)
 					<div class="block">
-						<h5>Sản phẩm {{ $dt->rank }}:</h5>
+						<h5>Sản phẩm {{ $key+1 }}:</h5>
 						<label for="exampleInputName2">Loại thiệp</label>
 						<select class="_select1">
 							@foreach($categories as $category)
-							<option value="{{$category->id}}" <?php if($category->id == $dt->product->category_id) echo 'selected' ;?> >{{$category->name}}</option>
+							<option value="{{$category->id}}" <?php if($category->id == $dt['product']['category_id'])echo 'selected' ;?> >{{$category->name}}</option>
 							@endforeach
 						</select>
 						<label for="exampleInputEmail2">Sản phẩm</label>

@@ -6,84 +6,54 @@
      <!--  breadcrumb -->  
       <ul class="breadcrumb">
         <li>
-          <a href="#">Home</a>
+          <a href="{{ url('/') }}">Trang chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Category</li>
+        <li class="active">{{$cate_id->name}}</li>
       </ul>
       <div class="row">        
         <!-- Sidebar Start-->
         <aside class="span3">
          <!-- Category-->  
           <div class="sidewidt">
-            <h2 class="heading2"><span>Categories</span></h2>
+            <h2 class="heading2"><span>LOẠI THIỆP</span></h2>
             <ul class="nav nav-list categories">
+            @foreach($categories as $category)
               <li>
-                <a href="category.html">Men Accessories</a>
+                <a href="{{ url('category/'.$category->slug) }}">{{ $category->name }}</a>
               </li>
-              <li>
-                <a href="category.html">Women Accessories</a>
-              </li>
-              <li>
-                <a href="category.html">Computers </a>
-              </li>
-              <li>
-                <a href="category.html">Home and Furniture</a>
-              </li>
-              <li>
-                <a href="category.html">Others</a>
-              </li>
+            @endforeach
             </ul>
           </div>
          <!--  Best Seller -->  
           <div class="sidewidt">
-            <h2 class="heading2"><span>Best Seller</span></h2>
+            <h2 class="heading2"><span>Sản phẩm nổi bật</span></h2>
             <ul class="bestseller">
+            @foreach($featured_products as $key => $featured_product)
               <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Women Accessories</span>
-                <span class="price">$250</span>
+                <img width="50" height="50" src="/uploads/thumbs/{{ $featured_photo[$key]->title }}" alt="product" title="product">
+                <a class="productname" href="product.html">{{ $featured_product->product->name }}</a>
+                <span class="procategory">{{ $featured_product->product->category->name }}</span>
+                <span class="price">{{ $featured_product->product->price }}.000đ</span>
               </li>
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Electronics</span>
-                <span class="price">$250</span>
-              </li>
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Electronics</span>
-                <span class="price">$250</span>
-              </li>
+            @endforeach
             </ul>
           </div>
           <!-- Latest Product -->  
           <div class="sidewidt">
-            <h2 class="heading2"><span>Latest Products</span></h2>
+            <h2 class="heading2"><span>Sản phẩm mới</span></h2>
             <ul class="bestseller">
+            @foreach($lastest_product as $lastest)
               <li>
                 <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Women Accessories</span>
-                <span class="price">$250</span>
+                <a class="productname" href="product.html">{{$lastest->name}}</a>
+                <span class="procategory">{{$lastest->category->name}}</span>
+                <span class="price">{{$lastest->price}}.000đ</span>
               </li>
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Electronics</span>
-                <span class="price">$250</span>
-              </li>
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Electronics</span>
-                <span class="price">$250</span>
-              </li>
+            @endforeach
             </ul>
           </div>
-          <!--  Must have -->  
+     {{--      <!--  Must have -->  
           <div class="sidewidt">
           <h2 class="heading2"><span>Must have</span></h2>
           <div class="flexslider" id="mainslider">
@@ -97,6 +67,7 @@
             </ul>
           </div>
           </div>
+          <!--End Must have --> --}}
         </aside>
         <!-- Sidebar End-->
         <!-- Category-->

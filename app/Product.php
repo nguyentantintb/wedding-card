@@ -21,4 +21,8 @@ class Product extends Model implements SluggableInterface {
 	public function photos() {
 		return $this->hasMany('App\Photo');
 	}
+	public function getMainphotoAttribute(){
+		$photo = $this->photos()->first();
+		return ($photo) ? $photo->title : 'default.jpg';
+	}
 }

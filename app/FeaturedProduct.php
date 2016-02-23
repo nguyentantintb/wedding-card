@@ -13,4 +13,5 @@ class FeaturedProduct extends Model
 	}
     public $timestamps = false;
 
+
 }

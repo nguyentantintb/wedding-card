@@ -30,13 +30,6 @@ class DatabaseSeeder extends Seeder {
 			]
 		);
 
-		for($i=1; $i<51; $i++){
-        	$photo = new Photo();
-        	$photo->title = "default.jpg";
-        	$photo->product_id = $i;
-        	$photo->save();
-        }
-
 
 
 		Model::reguard();

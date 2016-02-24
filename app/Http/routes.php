@@ -19,9 +19,11 @@ Route::get('contact', 'PagesController@getContact');
 Route::get('/', 'PagesController@index');
 Route::post('send-contact', 'PagesController@sendContact');
 Route::get('category/{slug}', 'PagesController@ProductOfCate');
+Route::get('product/{slug}',['as'=>'product','uses'=>'PagesController@ProductDetail']);
 Route::get('shopping-cart', 'PagesController@ShoppingCart');
 Route::get('buy-product/{slug}', 'PagesController@buyProduct');
 Route::get('romove-product/{id}',['as'=>'removeitem','uses'=>'PagesController@removeItem']);
+Route::get('update-cart/{id}',['as'=>'updatecart','uses'=>'PagesController@updateCart']);
 
 //Redirect to List category when type /admin
 Route::get('admin', function () {

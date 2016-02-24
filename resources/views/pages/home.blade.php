@@ -49,10 +49,10 @@
       <ul class="thumbnails">
       @foreach($featured_products as $featured_product)
         <li class="span3">
-          <a class="prdocutname" href="product.html"><strong>{{ $featured_product->product->name }}</strong></a>
+          <a class="prdocutname" href="{!! url('product',[$featured_product->slug]) !!}"><strong>{{ $featured_product->product->name }}</strong></a>
           <div class="thumbnail">
             <span class="offer tooltip-test" >Offer</span>
-            <a href="#"><img alt="" src="/uploads/{{$featured_product->product->mainphoto}}"></a>
+            <a href="{{ url('product/'.$featured_product->product->slug) }}"><img alt="" src="/uploads/{{$featured_product->product->mainphoto}}"></a>
             <div class="pricetag">
               <span class="spiral"></span><a href="{!! url('buy-product',[$featured_product->product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
               <div class="price">

@@ -71,6 +71,13 @@ class PagesController extends Controller
         return view('pages.category', compact('productOfcate', 'cate_id', 'categories', 'featured_products', 'featured_photo', 'lastest_product'));
     }
 
+    public function ProductDetail($slug)
+    {
+        $product = Product::findBySlug($slug)->first();
+
+        return view('pages.product',compact('product'));
+    }
+
     public function ShoppingCart()
     {
         $content = Cart::content();
@@ -81,7 +88,6 @@ class PagesController extends Controller
     public function buyProduct($slug)
     {
         $product = Product::findBySlug($slug)->first();
-        //dd($product->mainphoto);
         Cart::add(array('id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'options' => array('img' => $product->mainphoto)));
         $content = Cart::content();
         return redirect('shopping-cart');
@@ -90,6 +96,12 @@ class PagesController extends Controller
     public function removeItem($id)
     {
         Cart::remove($id);
+        return redirect('shopping-cart');
+    }
+
+    public function updateCart($id)
+    {
+        Cart::update($id);
         return redirect('shopping-cart');
     }
 }

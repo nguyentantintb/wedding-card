@@ -29,7 +29,7 @@
             {{-- <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product['options','img'] !!}" height="50" width="50"></a></td> --}}
             <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product->options->img !!}" height="50" width="50"></a></td>
             
-            <td  class="name"><a href="#">{!! $product["name"] !!}</a></td>
+            <td  class="name"><a href="#">{!! $product->name !!}</a></td>
 
             <td class="quantity"><input type="number" size="1" value="1" name="quantity[40]" class="span1">
 

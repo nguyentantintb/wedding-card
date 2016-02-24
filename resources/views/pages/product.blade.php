@@ -96,10 +96,10 @@
       <ul class="thumbnails">
       @foreach($product_related as $product) 
         <li class="span3">
-          <a class="prdocutname" href="product.html">{{  $product->name }}</a>
+          <a class="prdocutname" href="{{ url('product/'.$product->slug) }}">{{  $product->name }}</a>
           <div class="thumbnail">
             <span class="sale tooltip-test">Sale</span>
-            <a href="#"><img alt="" src="/uploads/default.jpg"></a>
+            <a href="{{ url('product/'.$product->slug) }}"><img alt="" src="/uploads/default.jpg"></a>
             <div class="pricetag">
               <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
               <div class="price">

@@ -74,14 +74,22 @@ class PagesController extends Controller
     public function ShoppingCart()
     {
         $content = Cart::content();
-        return view('pages.shopping-cart', compact('content'));
+        $total = Cart::total();
+        return view('pages.shopping-cart', compact('content','total'));
     }
 
     public function buyProduct($slug)
     {
         $product = Product::findBySlug($slug)->first();
-        Cart::add(array('id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price));
+        //dd($product->mainphoto);
+        Cart::add(array('id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'options' => array('img' => $product->mainphoto)));
         $content = Cart::content();
+        return redirect('shopping-cart');
+    }
+
+    public function removeItem($id)
+    {
+        Cart::remove($id);
         return redirect('shopping-cart');
     }
 }

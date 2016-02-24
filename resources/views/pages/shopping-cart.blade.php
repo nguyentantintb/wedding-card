@@ -26,13 +26,16 @@
           </tr>
           @foreach($content as $product)
           <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">{{ $product->name }}</a></td>
+            {{-- <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product['options','img'] !!}" height="50" width="50"></a></td> --}}
+            <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product->options->img !!}" height="50" width="50"></a></td>
+            
+            <td  class="name"><a href="#">{!! $product["name"] !!}</a></td>
+
             <td class="quantity"><input type="number" size="1" value="1" name="quantity[40]" class="span1">
 
              </td>
              <td class="total"> <a href="#"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
-              <a href="#"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
+              <a href="{!! url('romove-product',['id'=>$product['rowid']]) !!}"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
 
 
             <td class="price">{!! number_format($product["price"],0,",",".") !!}</td>
@@ -59,7 +62,7 @@
               </tr> --}}
               <tr>
                 <td><span class="extra bold totalamout">Total :</span></td>
-                <td><span class="bold totalamout">$150.28</span></td>
+                <td><span class="bold totalamout">${!! $total !!}</span></td>
               </tr>
             </table>
             <input type="submit" value="CheckOut" class="btn btn-orange pull-right">

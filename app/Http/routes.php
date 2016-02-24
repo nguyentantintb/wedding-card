@@ -21,6 +21,7 @@ Route::post('send-contact', 'PagesController@sendContact');
 Route::get('category/{slug}', 'PagesController@ProductOfCate');
 Route::get('shopping-cart', 'PagesController@ShoppingCart');
 Route::get('buy-product/{slug}', 'PagesController@buyProduct');
+Route::get('romove-product/{id}',['as'=>'removeitem','uses'=>'PagesController@removeItem']);
 
 //Redirect to List category when type /admin
 Route::get('admin', function () {

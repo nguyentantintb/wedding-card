@@ -74,9 +74,12 @@ class PagesController extends Controller
     public function ProductDetail($slug)
     {
         $product = Product::findBySlug($slug)->first();
+        $product_related = Product::where('category_id',$product->category_id)->limit(4)->get();
 
-        return view('pages.product',compact('product'));
+        return view('pages.product',compact('product','product_related'));
     }
+
+
 
     public function ShoppingCart()
     {

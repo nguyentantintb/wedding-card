@@ -74,9 +74,9 @@
       <ul class="thumbnails">
       @foreach($lastest_product as $product)
         <li class="span3">
-          <a class="prdocutname" href="product.html"><strong>{{ $product->name }}</strong></a>
+          <a class="prdocutname" href="{{ url('product/'.$product->slug) }}"><strong>{{ $product->name }}</strong></a>
           <div class="thumbnail">
-            <a href="#"><img alt="" src="/uploads/{{$product->mainphoto}}"></a>
+            <a href="{{ url('product/'.$product->slug) }}"><img alt="" src="/uploads/{{$product->mainphoto}}"></a>
             <div class="pricetag">
               <span class="spiral"></span><a href="{!! url('buy-product',[$product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
               <div class="price">

@@ -107,4 +107,11 @@ class PagesController extends Controller
         Cart::update($id);
         return redirect('shopping-cart');
     }
+
+    public function OrderProduct()
+    {
+        $content = Cart::content();
+         $total = Cart::total();
+       return view('pages.checkout',compact('content','total'));
+    }
 }

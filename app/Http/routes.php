@@ -24,6 +24,7 @@ Route::get('shopping-cart', 'PagesController@ShoppingCart');
 Route::get('buy-product/{slug}', 'PagesController@buyProduct');
 Route::get('romove-product/{id}',['as'=>'removeitem','uses'=>'PagesController@removeItem']);
 Route::get('update-cart/{id}',['as'=>'updatecart','uses'=>'PagesController@updateCart']);
+Route::get('checkout',['as'=>'checkout','uses'=>'PagesController@OrderProduct']);
 
 //Redirect to List category when type /admin
 Route::get('admin', function () {

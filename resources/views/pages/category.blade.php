@@ -86,7 +86,7 @@
                         <span class="sale tooltip-test">Sale</span>
                         <a href="{{ url('product/'.$product->slug) }}"><img alt="" src="/uploads/thumbs/{{$product->mainphoto}}"></a>
                         <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
+                          <span class="spiral"></span><a href="{!! url('buy-product',[$product->id,$product->slug]) !!}" class="productcart">ADD TO CART</a>
                           <div class="price">
                             <div class="pricenew">{{ $product->price }}</div>
                             <div class="priceold">$5000.00</div>

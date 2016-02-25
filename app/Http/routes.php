@@ -21,9 +21,10 @@ Route::post('send-contact', 'PagesController@sendContact');
 Route::get('category/{slug}', 'PagesController@ProductOfCate');
 Route::get('product/{slug}',['as'=>'product','uses'=>'PagesController@ProductDetail']);
 Route::get('shopping-cart', 'PagesController@ShoppingCart');
-Route::get('buy-product/{slug}', 'PagesController@buyProduct');
+Route::get('buy-product/{id}/{slug}', 'PagesController@buyProduct');
 Route::get('romove-product/{id}',['as'=>'removeitem','uses'=>'PagesController@removeItem']);
 Route::get('update-cart/{id}',['as'=>'updatecart','uses'=>'PagesController@updateCart']);
+Route::get('update-qty/{id}/{qty}',['as'=>'update-qty','uses'=>'PagesController@UpdateQty']);
 Route::get('checkout',['as'=>'checkout','uses'=>'PagesController@OrderProduct']);
 
 //Redirect to List category when type /admin
@@ -31,7 +32,7 @@ Route::get('admin', function () {
 	return Redirect('admin/category');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 	Route::resource('product', 'ProductController');
 	Route::resource('category', 'CategoryController');
 

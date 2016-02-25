@@ -73,7 +73,7 @@ class PagesController extends Controller
 
     public function ProductDetail($slug)
     {
-        $product = Product::findBySlug($slug)->first();
+        $product = Product::where('slug', '=', $slug)->first();
         $product_related = Product::where('category_id',$product->category_id)->limit(4)->get();
 
         return view('pages.product',compact('product','product_related'));
@@ -88,11 +88,10 @@ class PagesController extends Controller
         return view('pages.shopping-cart', compact('content','total'));
     }
 
-    public function buyProduct($slug)
+    public function buyProduct($id)
     {
-        $product = Product::findBySlug($slug)->first();
+        $product = Product::where('id', '=', $id)->first();
         Cart::add(array('id' => $product->id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'options' => array('img' => $product->mainphoto)));
-        $content = Cart::content();
         return redirect('shopping-cart');
     }
 
@@ -106,6 +105,19 @@ class PagesController extends Controller
     {
         Cart::update($id);
         return redirect('shopping-cart');
+    }
+
+    public function UpdateQty()
+    {
+        if (Request::ajax()) {
+            $id = Request::get('id');
+            $qty = Request::get('qty');
+            Cart::update($id,$qty);
+            //  Cart::update($rowid, array(                 // Let's update cart!
+            // 'qty' => $id
+            // ));
+            echo "oke";
+        }
     }
 
     public function OrderProduct()

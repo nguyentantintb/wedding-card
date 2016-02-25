@@ -54,7 +54,7 @@
             <span class="offer tooltip-test" >Offer</span>
             <a href="{{ url('product/'.$featured_product->product->slug) }}"><img alt="" src="/uploads/{{$featured_product->product->mainphoto}}"></a>
             <div class="pricetag">
-              <span class="spiral"></span><a href="{!! url('buy-product',[$featured_product->product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
+              <span class="spiral"></span><a href="{!! url('buy-product',[$featured_product->product->id,$featured_product->product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
               <div class="price">
                 <div class="pricenew">{{ $featured_product->product->price }}.000đ</div>
                 {{-- <div class="priceold">$5000.00</div> --}}
@@ -78,7 +78,7 @@
           <div class="thumbnail">
             <a href="{{ url('product/'.$product->slug) }}"><img alt="" src="/uploads/{{$product->mainphoto}}"></a>
             <div class="pricetag">
-              <span class="spiral"></span><a href="{!! url('buy-product',[$product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
+              <span class="spiral"></span><a href="{!! url('buy-product',[$product->id,$product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
               <div class="price">
                 <div class="pricenew">{{ $product->price }}.000đ</div>              
               </div>

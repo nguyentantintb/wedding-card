@@ -14,6 +14,8 @@
     <h1 class="heading1"><span class="maintext"> Shopping Cart</span><span class="subtext"> All items in your  Shopping Cart</span></h1>
     <!-- Cart-->
     <div class="cart-info">
+      <form method="POST" action="">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
       <table class="table table-striped table-bordered">
         <tr>
           <th class="image">Hình</th>
@@ -24,25 +26,28 @@
           <th class="total">Tổng Cộng</th>
 
         </tr>
-        @foreach($content as $product)
-        <tr>
-          {{-- <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product['options','img'] !!}" height="50" width="50"></a></td> --}}
-          <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product->options->img !!}" height="50" width="50"></a></td>
+      
+          @foreach($content as $product)
+          <tr>
+            {{-- <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product['options','img'] !!}" height="50" width="50"></a></td> --}}
+            <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product->options->img !!}" height="50" width="50"></a></td>
 
-          <td  class="name"><a href="#">{!! $product->name !!}</a></td>
+            <td  class="name"><a href="#">{!! $product->name !!}</a></td>
 
-          <td class="quantity"><input type="number" size="1" value="1" name="quantity[40]" class="span1">
+            <td class="quantity"><input class="qty" type="number" size="1" value="{{ $product->qty }}" name="quantity[40]" class="span1">
 
-          </td>
-          <td class="total"> <a href="#"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
-            <a href="{!! url('romove-product',['id'=>$product['rowid']]) !!}"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
+            </td>
+            <td class="total"> <a href="#" id="{{ $product->rowid }} " class="updateQty"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
+              <a href="{!! url('romove-product',['id'=>$product['rowid']]) !!}"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
 
 
-            <td class="price">{!! number_format($product["price"],0,",",".") !!}</td>
-            <td class="total">{!! number_format($product["price"],0,",",".") !!}</td>
-          </tr>
-          @endforeach
+              <td class="price">{!! number_format($product["price"],0,",",".") !!}</td>
+              <td class="total">{!! number_format($product["price"],0,",",".")*$product->qty !!}</td>
+            </tr>
+            @endforeach
+          
         </table>
+          </form>
       </div>
       <div class="container">
         <div class="pull-right">

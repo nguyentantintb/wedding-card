@@ -62,7 +62,7 @@
                 <span class="spiral"></span>${{ $product->price }}</div>
               </div>
               <ul class="productpagecart">
-                <li><a class="cart" href="#">Add to Cart</a>
+                <li><a class="cart" href="{!! url('buy-product',[$product->id,$product->slug]) !!}">Add to Cart</a>
                 </li>
               </ul>
               <!-- Product Description tab & comments-->

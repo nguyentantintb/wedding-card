@@ -32,7 +32,7 @@
             @foreach($featured_products as $key => $featured_product)
               <li>
                 <img width="50" height="50" src="/uploads/thumbs/default.jpg" alt="product" title="product">
-                <a class="productname" href="product.html">{{ $featured_product->product->name }}</a>
+                <a class="productname" href="{{ url('product/'.$featured_product->product->slug) }}">{{ $featured_product->product->name }}</a>
                 <span class="procategory">{{ $featured_product->product->category->name }}</span>
                 <span class="price">{{ $featured_product->product->price }}.000đ</span>
               </li>
@@ -46,7 +46,7 @@
             @foreach($lastest_product as $lastest)
               <li>
                 <img width="50" height="50" src="/uploads/thumbs/default.jpg" alt="product" title="product">
-                <a class="productname" href="#">{{$lastest->name}}</a>
+                <a class="productname" href="{{ url('product/'.$lastest->slug) }}">{{$lastest->name}}</a>
                 <span class="procategory">{{$lastest->category->name}}</span>
                 <span class="price">{{$lastest->price}}.000đ</span>
               </li>
@@ -81,10 +81,10 @@
                   <ul class="thumbnails grid">
                   @foreach($productOfcate as $product)
                     <li class="span3">
-                      <a class="prdocutname" href="#l">{{ $product->name }}</a>
+                      <a class="prdocutname" href="{{ url('product/'.$product->slug) }}">{{ $product->name }}</a>
                       <div class="thumbnail">
                         <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="/uploads/thumbs/{{$product->mainphoto}}"></a>
+                        <a href="{{ url('product/'.$product->slug) }}"><img alt="" src="/uploads/thumbs/{{$product->mainphoto}}"></a>
                         <div class="pricetag">
                           <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
                           <div class="price">

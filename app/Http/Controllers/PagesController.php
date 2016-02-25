@@ -60,7 +60,7 @@ class PagesController extends Controller
     {
         $cate_id           = Category::where('slug', '=', $slug)->first();
         $categories        = Category::all();
-        $productOfcate     = Product::where('category_id', $cate_id->id)->orderBy('created_at', 'DESC')->paginate(3);
+        $productOfcate     = Product::where('category_id', $cate_id->id)->orderBy('created_at', 'DESC')->get();
         $featured_products = FeaturedProduct::orderBy('rank', 'ASC')->get();
         foreach ($featured_products as $i) {
             $id[] =

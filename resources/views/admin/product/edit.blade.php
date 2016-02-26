@@ -272,8 +272,8 @@ $('#cboxLoadingGraphic').append("<i class='icon-spinner orange'></i>");
                     _token: token,
                     _method: 'PUT'
                   },
-        thumbnailWidth: 200,
-        thumbnailHeight: 150,
+        thumbnailWidth: 250,
+        thumbnailHeight: 200,
         parallelUploads: 20,
         maxFilesize:20,
         uploadMultiple: true,
@@ -323,6 +323,7 @@ $('#cboxLoadingGraphic').append("<i class='icon-spinner orange'></i>");
     myDropzone.on("queuecomplete", function(progress) {
         document.querySelector("#total-progress").style.opacity = "0";
         document.querySelector(".start").removeAttribute("disabled");
+        window.location.replace('/admin/product');
     });
 
 </script>

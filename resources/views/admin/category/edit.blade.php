@@ -15,15 +15,7 @@
 			<!--PAGE CONTENT BEGINS-->
 			@include('admin.partials._error')
 			{!! Form::open(array('route'=>array('admin.category.update', $cate->id), 'method' => 'PUT', 'class' => 'form-horizontal')) !!}
-			<div class="control-group">
-				<label class="control-label">Category Parent</label>
-
-				<div class="controls">
-					<select name="" id="">
-						<option value=""></option>
-					</select>
-				</div>
-			</div>
+			
 
 			<div class="control-group">
 				<label class="control-label" for="form-field-1">Tên mới</label>

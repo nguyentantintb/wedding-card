@@ -16,15 +16,6 @@
 			@include('admin.partials._error')
 			<form id="demo-form" data-parsley-validate="" class="form-horizontal" action="{{ route('admin.category.store') }}" method="POST">
 				<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-				<div class="control-group">
-					<label class="control-label">Category Parent</label>
-
-					<div class="controls">
-						<select name="" id="">
-							<option value=""></option>
-						</select>
-					</div>
-				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="form-field-1">Tên loại thiệp</label>

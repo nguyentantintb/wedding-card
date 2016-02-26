@@ -116,15 +116,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- The global file processing state -->
-                <div>
-                    <span class="fileupload-process">
-                        <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                            <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress>
-                            </div>
-                        </div>
-                    </span>
-                </div>
                 <div class="space-4">
                 </div>
                 <div class="form-actions">
@@ -184,8 +175,8 @@
 		params: {
                     _token: token
                   },
-		thumbnailWidth: 200,
-		thumbnailHeight: 150,
+		thumbnailWidth: 250,
+		thumbnailHeight: 200,
 		parallelUploads: 20,
 		maxFilesize:20,
 		uploadMultiple: true,
@@ -235,6 +226,8 @@
 	myDropzone.on("queuecomplete", function(progress) {
 		document.querySelector("#total-progress").style.opacity = "0";
 		document.querySelector(".start").removeAttribute("disabled");
+                        alert('All images are uploaded');
+                        location.reload();
 	});
 
 </script>

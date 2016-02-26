@@ -74,7 +74,7 @@ class ProductController extends Controller
                     $success         = $file->move($destinationPath, $filename);
                     if ($success) {
                         $thumbPath = 'uploads/thumbs/';
-                        $thumb1    = Image::make($path)->resize(200, 150)->save($thumbPath . $filename);
+                        $thumb1    = Image::make($path)->resize(270, 180)->save($thumbPath . $filename);
                     };
                     $photo             = new Photo();
                     $photo->title      = $filename;
@@ -82,9 +82,9 @@ class ProductController extends Controller
                     $photo->save();
                 };
             };
+            return redirect()->back();
         };
-        // return redirect()->back();
-        // return view('admin.product.test', compact('files'))  ;
+     return redirect()->back();
     }
 
     /**
@@ -143,7 +143,7 @@ class ProductController extends Controller
                     $success         = $file->move($destinationPath, $filename);
                     if ($success) {
                         $thumbPath         = 'uploads/thumbs/';
-                        $thumb1            = Image::make($path)->resize(200, 150)->save($thumbPath . $filename);
+                        $thumb1            = Image::make($path)->resize(270, 180)->save($thumbPath . $filename);
                         $photo             = new Photo();
                         $photo->title      = $filename;
                         $photo->product_id = $id;
@@ -152,7 +152,7 @@ class ProductController extends Controller
                 };
             };
         };
-        // return redirect()->back();
+        return redirect()->route('admin.product.edit', $product->slug);
     }
 
     /**

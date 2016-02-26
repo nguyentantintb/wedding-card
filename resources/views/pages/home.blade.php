@@ -52,7 +52,7 @@
           <a class="prdocutname" href="{!! url('product',[$featured_product->slug]) !!}"><strong>{{ $featured_product->product->name }}</strong></a>
           <div class="thumbnail">
             <span class="offer tooltip-test" >Offer</span>
-            <a href="{{ url('product/'.$featured_product->product->slug) }}"><img alt="" src="/uploads/{{$featured_product->product->mainphoto}}"></a>
+            <a href="{{ url('product/'.$featured_product->product->slug) }}"><img alt="" src="/uploads/thumbs/{{$featured_product->product->mainphoto}}"></a>
             <div class="pricetag">
               <span class="spiral"></span><a href="{!! url('buy-product',[$featured_product->product->id,$featured_product->product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
               <div class="price">
@@ -76,7 +76,7 @@
         <li class="span3">
           <a class="prdocutname" href="{{ url('product/'.$product->slug) }}"><strong>{{ $product->name }}</strong></a>
           <div class="thumbnail">
-            <a href="{{ url('product/'.$product->slug) }}"><img alt="" src="/uploads/{{$product->mainphoto}}"></a>
+            <a href="{{ url('product/'.$product->slug) }}"><img alt="" src="/uploads/thumbs/{{$product->mainphoto}}"></a>
             <div class="pricetag">
               <span class="spiral"></span><a href="{!! url('buy-product',[$product->id,$product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
               <div class="price">

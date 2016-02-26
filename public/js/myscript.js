@@ -50,15 +50,17 @@ $(document).ready(function() {
   $(".updateQty").click(function(e){
    e.preventDefault();
    var rowid = $(this).attr('id');
-   var qty = $(this).parent().parent().find(".qty").val();
+   var qty = $(this).parent().parent().find(".qty");
    var token = $("input[name='_token']").val();
    $.ajax({
-    url: 'update-qty/'+ rowid+'/'+qty,
+    url: 'update-qty/'+ rowid+'/'+qty.val(),
     type: 'GET',
     cache:false,
-    data:{"_token":token,"id":rowid,"qty":qty},
+    data:{"_token":token,"id":rowid,"qty":qty.val()},
     success:function (data) {
       if (data == "oke") {
+          qty.attr('value',qty.val());
+          alert('update ok!');
           window.location = "shopping-cart"
          };
        }

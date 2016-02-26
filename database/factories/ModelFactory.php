@@ -29,7 +29,7 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
 	return [
 		'name' => $faker->word,
-		'price' => $faker->randomNumber('2'),
+		'price' => rand(1,6).'000',
 		'description' => $faker->sentence('5'),
 		'category_id' => rand(1, 10),
 	];

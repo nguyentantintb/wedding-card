@@ -56,7 +56,7 @@
             <div class="pricetag">
               <span class="spiral"></span><a href="{!! url('buy-product',[$featured_product->product->id,$featured_product->product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
               <div class="price">
-                <div class="pricenew">{{ $featured_product->product->price }}.000đ</div>
+                <div class="pricenew">{!! number_format($featured_product->product->price,0,",",".") !!} VND</div>
                 {{-- <div class="priceold">$5000.00</div> --}}
               </div>
             </div>
@@ -80,7 +80,7 @@
             <div class="pricetag">
               <span class="spiral"></span><a href="{!! url('buy-product',[$product->id,$product->slug]) !!}" class="productcart">Thêm vào giỏ</a>
               <div class="price">
-                <div class="pricenew">{{ $product->price }}.000đ</div>              
+                <div class="pricenew">{!! number_format($product->price,0,",",".") !!} VND</div>              
               </div>
             </div>
           </div>

@@ -32,7 +32,8 @@
             @foreach($featured_products as $featured_product)
               <li>
                 <img width="50" height="50" src="/uploads/thumbs/{{ $featured_product->product->mainphoto }}" alt="product" title="product">
-                <a class="productname" href="product.html">{{ $featured_product->product->name }}</a>
+                <a class="productname" href="{{ url('product/'.$featured_product->product->slug) }}">{{ $featured_product->product->name }}</a>
+
                 <span class="procategory">{{ $featured_product->product->category->name }}</span>
                 <span class="price">{{ $featured_product->product->price }}.000đ</span>
               </li>
@@ -46,7 +47,7 @@
             @foreach($lastest_product as $lastest)
               <li>
                 <img width="50" height="50" src="/uploads/thumbs/{{ $lastest->mainphoto }}" alt="product" title="product">
-                <a class="productname" href="product.html">{{$lastest->name}}</a>
+                <a class="productname" href="{{ url('product/'.$lastest->slug) }}">{{$lastest->name}}</a>
                 <span class="procategory">{{$lastest->category->name}}</span>
                 <span class="price">{{$lastest->price}}.000đ</span>
               </li>
@@ -81,12 +82,12 @@
                   <ul class="thumbnails grid">
                   @foreach($productOfcate as $product)
                     <li class="span3">
-                      <a class="prdocutname" href="product.html">{{ $product->name }}</a>
+                      <a class="prdocutname" href="{{ url('product/'.$product->slug) }}">{{ $product->name }}</a>
                       <div class="thumbnail">
                         <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="/uploads/thumbs/{{$product->mainphoto}}"></a>
+                        <a href="{{ url('product/'.$product->slug) }}"><img alt="" src="/uploads/thumbs/{{$product->mainphoto}}"></a>
                         <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
+                          <span class="spiral"></span><a href="{!! url('buy-product',[$product->id,$product->slug]) !!}" class="productcart">ADD TO CART</a>
                           <div class="price">
                             <div class="pricenew">{{ $product->price }}</div>
                             <div class="priceold">$5000.00</div>

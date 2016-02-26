@@ -26,7 +26,7 @@ class RegisterRequest extends Request
         return [
             'name' => 'required',
             'email' => 'required|unique:users,email',
-            'password' => 'required',
+            'password' => 'required | max: 20 | min: 6',
             'password_confirmation' => 'required|same:password',
         ];
     }
@@ -37,6 +37,8 @@ class RegisterRequest extends Request
             'email.required' => 'Please Enter email',
             'email.unique' => 'Email is exists, Pleas Enter another email',
             'password.required' => 'Pleas Enter Password',
+            'password.max' => 'Length password maximum 20 character',
+            'password.min' => 'Length password minimum 6 character',
             'password_confirmation.required' => 'Please Enter Password Confirm',
             'password_confirmation.same' => 'Confirm password incorrect',
 

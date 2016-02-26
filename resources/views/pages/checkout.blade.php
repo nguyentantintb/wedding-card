@@ -73,22 +73,22 @@
                 </tr>
                 @foreach($content as $product)
                 <tr>
-            {{-- <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product['options','img'] !!}" height="50" width="50"></a></td> --}}
-            <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product->options->img !!}" height="50" width="50"></a></td>
+                  {{-- <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product['options','img'] !!}" height="50" width="50"></a></td> --}}
+                  <td class="image"><a href="#"><img title="product" alt="product" src="/uploads/{!! $product->options->img !!}" height="50" width="50"></a></td>
 
-            <td  class="name"><a href="#">{!! $product->name !!}</a></td>
+                  <td  class="name"><a href="#">{!! $product->name !!}</a></td>
 
-            <td class="quantity"><input class="qty" type="number" size="1" value="{{ $product->qty }}" name="quantity[40]" class="span1">
+                  <td class="quantity"><input class="qty" type="number" size="1" value="{{ $product->qty }}" name="quantity[40]" class="span1">
 
-            </td>
-            <td class="total"> <a href="#" id="{{ $product->rowid }} " class="updateQty"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
-              <a href="{!! url('romove-product',['id'=>$product['rowid']]) !!}"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
+                  </td>
+                  <td class="total"> <a href="#" id="{!! $product['rowid'] !!}" class="updateQty"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
+                    <a href="{!! url('romove-product',['id'=>$product['rowid']]) !!}"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
 
 
-              <td class="price">{!! number_format($product["price"],0,",",".") !!}</td>
-              <td class="total">{!! number_format($product["price"],0,",",".")*$product->qty !!}</td>
-            </tr>
-            @endforeach
+                    <td class="price">{!! number_format($product["price"],0,",",".") !!}</td>
+                    <td class="total">{!! number_format($product["price"]*$product->qty,0,",",".") !!}</td>
+                  </tr>
+                  @endforeach
                 </table>
               </form>
             </div>
@@ -99,7 +99,7 @@
                     <tbody>
                       <tr>
                         <td><span class="extra bold totalamout">Total :</span></td>
-                        <td><span class="bold totalamout">$120.68</span></td>
+                        <td><span class="bold totalamout">{!! number_format($total,0,",",".") !!} VND</span></td>
                       </tr>
                     </tbody>
                   </table>

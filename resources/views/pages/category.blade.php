@@ -34,7 +34,7 @@
                 <img width="50" height="50" src="/uploads/thumbs/default.jpg" alt="product" title="product">
                 <a class="productname" href="{{ url('product/'.$featured_product->product->slug) }}">{{ $featured_product->product->name }}</a>
                 <span class="procategory">{{ $featured_product->product->category->name }}</span>
-                <span class="price">{{ $featured_product->product->price }}.000đ</span>
+                <span class="price">{!! number_format($featured_product->product->price,0,",",".") !!} VND</span>
               </li>
             @endforeach
             </ul>
@@ -48,7 +48,7 @@
                 <img width="50" height="50" src="/uploads/thumbs/default.jpg" alt="product" title="product">
                 <a class="productname" href="{{ url('product/'.$lastest->slug) }}">{{$lastest->name}}</a>
                 <span class="procategory">{{$lastest->category->name}}</span>
-                <span class="price">{{$lastest->price}}.000đ</span>
+                <span class="price">{!! number_format($lastest->price,0,",",".") !!} VND</span>
               </li>
             @endforeach
             </ul>
@@ -88,7 +88,7 @@
                         <div class="pricetag">
                           <span class="spiral"></span><a href="{!! url('buy-product',[$product->id,$product->slug]) !!}" class="productcart">ADD TO CART</a>
                           <div class="price">
-                            <div class="pricenew">{{ $product->price }}</div>
+                            <div class="pricenew">{!! number_format($product->price,0,",",".") !!} VND</div>
                             <div class="priceold">$5000.00</div>
                           </div>
                         </div>

@@ -42,7 +42,7 @@
 
 
               <td class="price">{!! number_format($product["price"],0,",",".") !!}</td>
-              <td class="total">{!! number_format($product["price"],0,",",".")*$product->qty !!}</td>
+              <td class="total">{!! number_format($product["price"]*$product->qty,0,",",".") !!}</td>
             </tr>
             @endforeach
           
@@ -67,7 +67,7 @@
               </tr> --}}
               <tr>
                 <td><span class="extra bold totalamout">Total :</span></td>
-                <td><span class="bold totalamout">${!! $total !!}</span></td>
+                <td><span class="bold totalamout">{!! number_format($total,0,",",".") !!} VND</span></td>
               </tr>
             </table>
             {{-- <input type="submit" value="CheckOut" class="btn btn-orange pull-right"> --}}

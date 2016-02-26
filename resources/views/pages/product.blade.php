@@ -59,7 +59,7 @@
             <h1 class="productname"><span class="bgnone">My First Simle One Ecommerce template</span></h1>
             <div class="productprice">
               <div class="productpageprice">
-                <span class="spiral"></span>${{ $product->price }}</div>
+                <span class="spiral"></span>{!! number_format($product->price,0,",",".") !!} VND</div>
               </div>
               <ul class="productpagecart">
                 <li><a class="cart" href="{!! url('buy-product',[$product->id,$product->slug]) !!}">Add to Cart</a>

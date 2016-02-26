@@ -27,7 +27,7 @@ class isAdmin
                 return redirect()->guest('auth/login');
             }
         } else {
-            if ($this->auth->user()->emai == "administrator@gmail.com") {
+            if ($this->auth->user()->email == "administrator@gmail.com") {
                 return $next($request);
             } else {
                 return redirect()->guest('/');

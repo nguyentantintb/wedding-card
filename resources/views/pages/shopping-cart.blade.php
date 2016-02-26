@@ -14,7 +14,7 @@
     <h1 class="heading1"><span class="maintext"> Shopping Cart</span><span class="subtext"> All items in your  Shopping Cart</span></h1>
     <!-- Cart-->
     <div class="cart-info">
-      <form method="POST" action="">
+      <form>
       <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
       <table class="table table-striped table-bordered">
         <tr>
@@ -37,7 +37,7 @@
             <td class="quantity"><input class="qty" type="number" size="1" value="{{ $product->qty }}" name="quantity[40]" class="span1">
 
             </td>
-            <td class="total"> <a href="#" id="{{ $product->rowid }} " class="updateQty"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
+            <td class="total"> <a href="#" id="{!! $product['rowid'] !!}" class="updateQty"><img class="tooltip-test" data-original-title="Update" src="img/update.png" alt=""></a>
               <a href="{!! url('romove-product',['id'=>$product['rowid']]) !!}"><img class="tooltip-test" data-original-title="Remove"  src="img/remove.png" alt=""></a></td>
 
 

@@ -112,10 +112,7 @@ class PagesController extends Controller
         if (Request::ajax()) {
             $id = Request::get('id');
             $qty = Request::get('qty');
-            Cart::update($id,$qty);
-            //  Cart::update($rowid, array(                 // Let's update cart!
-            // 'qty' => $id
-            // ));
+            Cart::update($id,$qty);        
             echo "oke";
         }
     }

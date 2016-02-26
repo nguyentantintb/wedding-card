@@ -29,9 +29,9 @@
           <div class="sidewidt">
             <h2 class="heading2"><span>Sản phẩm nổi bật</span></h2>
             <ul class="bestseller">
-            @foreach($featured_products as $key => $featured_product)
+            @foreach($featured_products as $featured_product)
               <li>
-                <img width="50" height="50" src="/uploads/thumbs/{{ $featured_photo[$key]->title }}" alt="product" title="product">
+                <img width="50" height="50" src="/uploads/thumbs/{{ $featured_product->product->mainphoto }}" alt="product" title="product">
                 <a class="productname" href="product.html">{{ $featured_product->product->name }}</a>
                 <span class="procategory">{{ $featured_product->product->category->name }}</span>
                 <span class="price">{{ $featured_product->product->price }}.000đ</span>
@@ -45,7 +45,7 @@
             <ul class="bestseller">
             @foreach($lastest_product as $lastest)
               <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
+                <img width="50" height="50" src="/uploads/thumbs/{{ $lastest->mainphoto }}" alt="product" title="product">
                 <a class="productname" href="product.html">{{$lastest->name}}</a>
                 <span class="procategory">{{$lastest->category->name}}</span>
                 <span class="price">{{$lastest->price}}.000đ</span>
@@ -84,7 +84,7 @@
                       <a class="prdocutname" href="product.html">{{ $product->name }}</a>
                       <div class="thumbnail">
                         <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
+                        <a href="#"><img alt="" src="/uploads/thumbs/{{$product->mainphoto}}"></a>
                         <div class="pricetag">
                           <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
                           <div class="price">
